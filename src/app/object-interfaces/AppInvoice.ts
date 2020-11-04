@@ -6,6 +6,7 @@ export interface AppInvoice{
   id: number;
   checkinDate: string;
   checkoutDate: string;
+  invoiceDate: string;
   appUser: AppUser;
   appPropertySet: Set<AppProperty>;
 }
