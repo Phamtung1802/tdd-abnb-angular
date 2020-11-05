@@ -43,6 +43,7 @@ export class CreateUserComponent implements OnInit {
     //thanh cong
     () => {
       console.log("dang ky thanh cong");
+      this.message=null;
     },
     //that bai
       (error) => {

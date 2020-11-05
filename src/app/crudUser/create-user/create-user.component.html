@@ -7,7 +7,7 @@
 <br>
 <br>
 <form [formGroup]="userForm" style="width: 80%; margin-left: 10%; margin-top:3%">
-  <div *ngIf="message!=null">{{message}}</div>
+
   <div class="form-group">
     <label>User Name:</label>
     <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
@@ -31,6 +31,7 @@
       </div>
     </div>
   </div>
+  <div class="form-group">
     <label>Password:</label>
     <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
     <div *ngIf="passWordUser.invalid && (nameUser.dirty || nameUser.touched)"
@@ -39,6 +40,8 @@
         Password Not Empty
       </div>
     </div>
+  </div>
+  <div class="form-group">
     <label>PhoneNumber</label>
     <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter Phone Number">
     <div *ngIf="phoneNumberUser.invalid && (phoneNumberUser.dirty || phoneNumberUser.touched)"
@@ -47,12 +50,26 @@
         Phone Number Not Empty
       </div>
     </div>
+  </div>
+  <div class="form-group">
     <label>Avatar</label>
     <input type="text" class="form-control" placeholder="Enter Link">
+  </div>
   <br>
-  <button class="btn btn-success" [routerLink]="['']" style="float:right">Exit</button>
-  <button type="submit" class="btn btn-primary" (click)="createUser()"
-          style="float:right; margin-right:1%">Save
-  </button>
+  <div class="form-group">
+    <button class="btn btn-success" [routerLink]="['']" style="float:right">Exit</button>
+    <button type="submit" class="btn btn-primary" (click)="createUser()"
+            style="float:right; margin-right:1%">Save
+    </button>
+  </div>
+  <br>
+  <br>
+  <div *ngIf="message!=null"class="alert alert-danger my-1">
+    <div [innerHTML]="message">
+
+    </div>
+  </div>
+
 </form>
-<br><br>
+<br>
+
