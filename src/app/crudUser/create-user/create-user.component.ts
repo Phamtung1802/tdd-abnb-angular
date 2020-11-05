@@ -47,8 +47,9 @@ export class CreateUserComponent implements OnInit {
     },
     //that bai
       (error) => {
-        console.log(error.error.message)
-        this.message= error.error.message;
+        if(error.error.exception=="com.TDD.ABnB.exceptions.DuplilcateUserException"){
+          this.message= error.error.message;
+        }
       }
     );
   };
