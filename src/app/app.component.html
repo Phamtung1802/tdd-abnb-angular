@@ -28,9 +28,7 @@
          style="color: #062c33;font-size: 17px">TRỞ THÀNH CHỦ NHÀ</a>
 
       <div style="margin-left: 20%" class="form-inline my-2 my-lg-0">
-        <ng-template #tmp>
           <a [routerLink]="'/login'" >Login</a> | <a [routerLink]="'/register'">Register</a>
-        </ng-template>
       </div>
     </ul>
 
@@ -38,6 +36,7 @@
 </nav>
 
 <!--slideshow dau trang-->
+<router-outlet></router-outlet>
 
 <footer class="footer-area">
 
