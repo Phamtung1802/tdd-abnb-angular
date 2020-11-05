@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
         this.loginRequest = next;
       }, error => {
         // if(error.error.exception=)s
-        console.log("Error");
-        this.message= error.error.message;
+        console.log("Error "+ error);
+        // this.message= error.error.message;
       },
       () => {
         sessionStorage.setItem('rbnbuser', JSON.stringify(this.loginRequest));
