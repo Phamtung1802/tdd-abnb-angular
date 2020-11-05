@@ -69,8 +69,9 @@
 
   </div>
 </nav>
-<router-outlet></router-outlet>
-<!--slideshow dau trang-->
+
+<router-outlet (activate)="onChanges()" (deactivate)='onChanges()'></router-outlet>
+
 
 <footer class="footer-area">
 
