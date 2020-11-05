@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AppUserService} from '../../service/app-user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import { AppUser } from 'src/app/object-interfaces/AppUser';
 
 @Component({
   selector: 'app-create-user',
@@ -9,6 +10,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
+
+  message: String= null;
 
   userForm: FormGroup;
   constructor(private fb: FormBuilder,
@@ -25,7 +28,17 @@ export class CreateUserComponent implements OnInit {
     });
   }
   createUser(): void {
-    const user = this.userForm.value;
+    let user: AppUser={
+      name: this.userForm.value.name,
+      email: this.userForm.value.email,
+      password: this.userForm.value.password,
+      phoneNumber: this.userForm.value.phoneNumber,
+      avatar: null,
+      appRole:{
+        id: 2 as number
+      }
+    };
+
     this.appUserService.createUser(user).subscribe(
     //thanh cong
     () => {
@@ -33,7 +46,8 @@ export class CreateUserComponent implements OnInit {
     },
     //that bai
       (error) => {
-        console.log(error.message)
+        console.log(error.error.message)
+        this.message= error.error.message;
       }
     );
   };

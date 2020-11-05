@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer-bottom.component.css']
 })
 export class FooterBottomComponent implements OnInit {
+  DuplicateError: boolean =false;
+
 
   constructor() { }
 
