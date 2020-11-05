@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class CreateUserComponent implements OnInit {
 
-    userForm: FormGroup;
+  userForm: FormGroup;
   constructor(private fb: FormBuilder,
               private appUserService: AppUserService,
               private router: Router) { }
@@ -26,10 +26,19 @@ export class CreateUserComponent implements OnInit {
   }
   createUser(): void {
     const user = this.userForm.value;
-    this.appUserService.createUser(user).subscribe(() => {
-      this.router.navigate(['/login']);
-    });
-  }
+    this.appUserService.createUser(user).subscribe(
+    //thanh cong
+    () => {
+      console.log("dang ky thanh cong");
+    },
+    //that bai
+      (error) => {
+        console.log(error.message)
+      }
+    );
+  };
+
+
   get nameUser() {
     return this.userForm.get('name');
   }
