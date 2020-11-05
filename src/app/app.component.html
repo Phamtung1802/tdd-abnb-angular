@@ -29,6 +29,38 @@
          style="color: #062c33;font-size: 17px">TRỞ THÀNH CHỦ NHÀ</a>
 
       <div style="margin-left: 20%" class="form-inline my-2 my-lg-0">
+        <div *ngIf="loginRequest; else tmp">
+          <div>
+            <div *ngIf="loginRequest != null && loginRequest.roles[0] == 'ROLE_ADMIN';else msp">
+              <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                  Hi: {{loginRequest.username}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" >My Booking List</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" [routerLink]="''" (click)="logOut()">Log Out</a>
+                </div>
+              </div>
+            </div>
+            <ng-template #msp>
+              <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                  Hi: {{loginRequest.username}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]=""></a>
+                  <a class="dropdown-item" [routerLink]="" ></a>
+                  <a class="dropdown-item" [routerLink]="'/editUser'" >Edit Profile</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item"(click)="logOut()">Log Out</a>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
         <ng-template #tmp>
           <a [routerLink]="'/login'" >Login</a> | <a [routerLink]="'/register'">Register</a>
         </ng-template>
@@ -38,7 +70,8 @@
   </div>
 </nav>
 
-<!--slideshow dau trang-->
+<router-outlet (activate)="onChanges()" (deactivate)='onChanges()'></router-outlet>
+
 
 <footer class="footer-area">
 
