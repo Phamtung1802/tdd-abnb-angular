@@ -5,7 +5,7 @@ export interface AppReview{
   id: number;
   comment: string;
   rating: number;
-  date: String;
+  date: string;
   appUser: AppUser;
   appProperty: AppProperty;
   //

@@ -1,4 +1,47 @@
-<app-navbar-top></app-navbar-top>
-<router-outlet></router-outlet>
-<div>Router</div>
-<app-footer-bottom></app-footer-bottom>
+
+<!--navbar-->
+<div class="preloader d-flex align-items-center justify-content-center">
+  <div class="lds-ellipsis">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+   <span><a [routerLink]="''" class="nav-brand"><img src="assets/img/core-img/Logo.png" alt=""
+                                                     style="width: 120px; height: 45px"></a></span>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 5%; width: 90%">
+
+      <a class="nav-link" [routerLink]="''" style="color:#062c33;font-size: 17px">HOME <span
+        class="sr-only">(current)</span></a>
+
+      <a class="nav-link" [routerLink]="''" style="color: #062c33;font-size: 17px">NƠI Ở</a>
+
+      <a class="nav-link" [routerLink]="''" style="color: #062c33;font-size: 17px">TRẢI NGHIỆM</a>
+
+      <a class="nav-link disabled" [routerLink]="" tabindex="-1" aria-disabled="true"
+         style="color: #062c33;font-size: 17px">TRỞ THÀNH CHỦ NHÀ</a>
+
+      <div style="margin-left: 20%" class="form-inline my-2 my-lg-0">
+        <ng-template #tmp>
+          <a [routerLink]="'/login'" >Login</a> | <a [routerLink]="'/register'">Register</a>
+        </ng-template>
+      </div>
+    </ul>
+
+  </div>
+</nav>
+
+<!--slideshow dau trang-->
+
+<footer class="footer-area">
+
+</footer>
+
+
