@@ -42,7 +42,6 @@ export class CreateUserComponent implements OnInit {
     this.appUserService.createUser(user).subscribe(
     //thanh cong
     () => {
-      console.log("dang ky thanh cong");
       this.message=null;
     },
     //that bai

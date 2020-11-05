@@ -14,6 +14,7 @@ import {Iloginrequest} from '../object-interfaces/Iloginrequest';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginRequest: Iloginrequest = null;
+  message: string= null;
 
   constructor(private formBuilder: FormBuilder,
               private userService: IloginrequestService,
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      name: [''],
+      username: [''],
       password: ['']
     });
   }
@@ -33,11 +34,13 @@ export class LoginComponent implements OnInit {
     this.userService.getLoginRequest(login).subscribe(next => {
         this.loginRequest = next;
       }, error => {
-        alert('ban chua co tai khoan hoac thong tin dang nhap sai');
+        // if(error.error.exception=)s
+        console.log("Error");
+        this.message= error.error.message;
       },
       () => {
-        sessionStorage.setItem('user', JSON.stringify(this.loginRequest));
-        this.loginRequest = JSON.parse((sessionStorage.getItem('user')));
+        sessionStorage.setItem('rbnbuser', JSON.stringify(this.loginRequest));
+        this.loginRequest = JSON.parse((sessionStorage.getItem('rbnbuser')));
         console.log(this.loginRequest);
         if (this.loginRequest) {
           this.router.navigateByUrl('');
