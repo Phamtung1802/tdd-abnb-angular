@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {IloginrequestService} from '../service/iloginrequest.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Iloginrequest} from '../object-interfaces/Iloginrequest';
+import { AppUser } from '../object-interfaces/AppUser';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
     const login = this.loginForm.value;
     this.userService.getLoginRequest(login).subscribe(next => {
         this.loginRequest = next;
+        window.location.assign("http://localhost:4200")
       }, error => {
         // if(error.error.exception=)s
         console.log("Error "+ error);

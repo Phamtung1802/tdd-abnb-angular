@@ -37,4 +37,8 @@ export class IloginrequestService {
   getLoginRequest(login: ILogin): Observable<Iloginrequest> {
     return this.http.post<Iloginrequest>(API_URL + `/authenticate`, login);
   }
+  firstLogin(): Observable<any> {
+    return this.http.post(API_URL + `/token-authenticate`,"");
+  }
+
 }
