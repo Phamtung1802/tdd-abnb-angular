@@ -18,8 +18,9 @@ export class AppComponent implements OnInit{
   onChanges() {
     this.loginRequest = JSON.parse((sessionStorage.getItem('rbnbuser')));
   }
+
   logOut(): void {
-    sessionStorage.removeItem('user'),
+    sessionStorage.removeItem('rbnbuser'),
     this.loginRequest = JSON.parse((sessionStorage.getItem('rbnbuser')));
   }
 }
