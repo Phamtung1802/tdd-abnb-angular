@@ -23,7 +23,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginRequest = JSON.parse((sessionStorage.getItem('user')));
-    this.getUserById(this.loginRequest.id)
+    this.getUserById(this.loginRequest.id);
     this.userForm = this.fb.group({
       id: new FormControl(),
       name: new FormControl(),
