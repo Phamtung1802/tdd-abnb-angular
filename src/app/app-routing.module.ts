@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'editUser',
     component: EditUserComponent
   },
+  {
+    path: 'pwd-change',
+    component: CreateUserComponent,
+  },
 ];
 
 @NgModule({
