@@ -7,6 +7,7 @@ import {ILogin} from '../object-interfaces/ilogin';
 import {Iloginrequest} from '../object-interfaces/Iloginrequest';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { AppToken } from '../object-interfaces/AppToken';
+import { AppUser } from '../object-interfaces/AppUser';
 const API_URL = 'http://localhost:8080';
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class IloginrequestService {
 
   constructor(private http: HttpClient) { }
   token: AppToken={"token":""}
+  appUser: AppUser={
+    "name":""
+  }
+
 
   public getToken(): string {
     if(JSON.parse(sessionStorage.getItem('rbnbuser'))!=null){
@@ -26,12 +31,13 @@ export class IloginrequestService {
   public isAuthenticated(): boolean {
     // get the token
     const token = this.getToken();
-    // return a boolean reflecting
-    // whether or not the token is expired
-    if (token!=null){
-      return true;
-    }
-    else return false;
+    this.http.post(API_URL + `/token-authenticate`,"").subscribe(
+      data => {this.appUser=data},
+      err => {});
+      if(this.appUser.name.length>2){
+        return true
+      }
+       else return false;
   }
 
   getLoginRequest(login: ILogin): Observable<Iloginrequest> {
