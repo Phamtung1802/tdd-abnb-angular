@@ -44,8 +44,8 @@ export class AppComponent implements OnInit{
   }
 
   logOut(): void {
-    sessionStorage.removeItem('rbnbuser'),
-    this.loginRequest = JSON.parse((sessionStorage.getItem('rbnbuser')));
+    sessionStorage.removeItem('rbnbuser');
+    window.location.assign("http://localhost:4200")
   }
 
   getAllUser(){

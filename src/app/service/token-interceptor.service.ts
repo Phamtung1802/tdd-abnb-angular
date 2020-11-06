@@ -13,12 +13,16 @@ import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {  constructor(public auth: IloginrequestService) {}  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    request = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.auth.getToken()}`
-      }
-    });
+    if(this.auth.isAuthenticated){
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this.auth.getToken()}`
+        }
+      });
+    } else if(sessionStorage.getItem('rbnbuser')!=null){
+      sessionStorage.removeItem('rbnbuser');
+      window.location.assign("http://localhost:4200");
+    }
     return next.handle(request);
   }
 }
