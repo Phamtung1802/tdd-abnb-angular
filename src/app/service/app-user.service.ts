@@ -12,14 +12,15 @@ export class AppUserService {
   constructor(private http: HttpClient) { }
 
 
+
   createUser(user: AppUser): Observable<AppUser> {
-    return this.http.post<AppUser>(API_URL + `/users`, user);
+    return this.http.post<AppUser>(API_URL + `/api/auth/register`, user);
   }
   updateUser(id: number, user: AppUser): Observable<AppUser> {
-    return this.http.put<AppUser>(API_URL + `/users/${id}`, user);
+    return this.http.patch<AppUser>(API_URL + `/users/${id}`, user);
   }
   getUserById(id: number): Observable<AppUser> {
-    return this.http.get<AppUser>( API_URL + `/users/${id}`);
+    return this.http.get<AppUser>( API_URL + `/users/findUserById/${id}`);
   }
   getAllUser(): Observable<AppUser[]> {
     return this.http.get<AppUser[]>( API_URL + `/users/users`);
