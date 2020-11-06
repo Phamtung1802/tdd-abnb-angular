@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import {LoginComponent} from './login/login.component';
 import {from} from 'rxjs';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'src/app/service/token-interceptor.service' ;
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +24,14 @@ import {from} from 'rxjs';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
