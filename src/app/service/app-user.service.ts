@@ -13,7 +13,7 @@ export class AppUserService {
 
 
   createUser(user: AppUser): Observable<AppUser> {
-    return this.http.post<AppUser>(API_URL + `/api/auth/register`, user);
+    return this.http.post<AppUser>(API_URL + `/users`, user);
   }
   updateUser(id: number, user: AppUser): Observable<AppUser> {
     return this.http.put<AppUser>(API_URL + `/user/update/${id}`, user);

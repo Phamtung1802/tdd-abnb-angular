@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AppUserService} from '../../service/app-user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import { AppUser } from 'src/app/object-interfaces/AppUser';
 
 @Component({
   selector: 'app-create-user',
@@ -10,7 +11,9 @@ import {Router} from '@angular/router';
 })
 export class CreateUserComponent implements OnInit {
 
-    userForm: FormGroup;
+  message: String= null;
+
+  userForm: FormGroup;
   constructor(private fb: FormBuilder,
               private appUserService: AppUserService,
               private router: Router) { }
@@ -25,11 +28,32 @@ export class CreateUserComponent implements OnInit {
     });
   }
   createUser(): void {
-    const user = this.userForm.value;
-    this.appUserService.createUser(user).subscribe(() => {
-      this.router.navigate(['/login']);
-    });
-  }
+    let user: AppUser={
+      name: this.userForm.value.name,
+      email: this.userForm.value.email,
+      password: this.userForm.value.password,
+      phoneNumber: this.userForm.value.phoneNumber,
+      avatar: null,
+      appRole:{
+        id: 2 as number
+      }
+    };
+
+    this.appUserService.createUser(user).subscribe(
+    //thanh cong
+    () => {
+      this.message=null;
+    },
+    //that bai
+      (error) => {
+        if(error.error.exception=="com.TDD.ABnB.exceptions.DuplilcateUserException"){
+          this.message= error.error.message;
+        }
+      }
+    );
+  };
+
+
   get nameUser() {
     return this.userForm.get('name');
   }

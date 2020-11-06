@@ -7,12 +7,13 @@
 <br>
 <br>
 <form [formGroup]="userForm" style="width: 80%; margin-left: 10%; margin-top:3%">
+
   <div class="form-group">
     <label>User Name:</label>
     <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
     <div *ngIf="nameUser.invalid && (nameUser.dirty || nameUser.touched)"
-         class="alert alert-danger">
-      <div *ngIf="nameUser.errors.required">
+         class="alert alert-danger my-1">
+      <div *ngIf="nameUser.errors.required" class="my-1">
         User Name Not Empty
       </div>
     </div>
@@ -21,37 +22,54 @@
     <label>Email:</label>
     <input type="text" class="form-control" formControlName="email" placeholder="Enter email">
     <div *ngIf="emailUser.invalid && (nameUser.dirty || nameUser.touched)"
-         class="alert alert-danger">
+         class="alert alert-danger my-1">
       <div *ngIf="emailUser.errors.required">
         Email Not Empty
       </div>
-      <div *ngIf="emailUser.errors.email">
+      <div *ngIf="emailUser.errors.email" class="my-1">
         Invalid email
       </div>
     </div>
   </div>
+  <div class="form-group">
     <label>Password:</label>
     <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
     <div *ngIf="passWordUser.invalid && (nameUser.dirty || nameUser.touched)"
-         class="alert alert-danger">
-      <div *ngIf="passWordUser.errors.required">
+         class="alert alert-danger my-1">
+      <div *ngIf="passWordUser.errors.required" class="my-1">
         Password Not Empty
       </div>
     </div>
+  </div>
+  <div class="form-group">
     <label>PhoneNumber</label>
     <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter Phone Number">
     <div *ngIf="phoneNumberUser.invalid && (phoneNumberUser.dirty || phoneNumberUser.touched)"
-         class="alert alert-danger">
-      <div *ngIf="phoneNumberUser.errors.required">
+         class="alert alert-danger my-1">
+      <div *ngIf="phoneNumberUser.errors.required" class="my-1">
         Phone Number Not Empty
       </div>
     </div>
+  </div>
+  <div class="form-group">
     <label>Avatar</label>
-    <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter Phone Number">
+    <input type="text" class="form-control" placeholder="Enter Link">
+  </div>
   <br>
-  <button class="btn btn-success" [routerLink]="['']" style="float:right">Exit</button>
-  <button type="submit" class="btn btn-primary" (click)="createUser()"
-          style="float:right; margin-right:1%" [routerLink]="['/login']">Save
-  </button>
+  <div class="form-group">
+    <button class="btn btn-success" [routerLink]="['']" style="float:right">Exit</button>
+    <button type="submit" class="btn btn-primary" (click)="createUser()"
+            style="float:right; margin-right:1%">Save
+    </button>
+  </div>
+  <br>
+  <br>
+  <div *ngIf="message!=null"class="alert alert-danger my-1">
+    <div [innerHTML]="message">
+
+    </div>
+  </div>
+
 </form>
-<br><br>
+<br>
+
