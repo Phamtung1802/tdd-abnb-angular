@@ -30,7 +30,8 @@ import { TokenInterceptor } from 'src/app/service/token-interceptor.service' ;
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true}
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
