@@ -54,6 +54,8 @@ export class EditUserComponent implements OnInit {
     });
   }
   click():void{
+    this.currentUser.name="subthanhcong";
+    this.appUserService.changeData(this.currentUser);
     console.log('edit click');
     console.log(this.currentUser);
   }
