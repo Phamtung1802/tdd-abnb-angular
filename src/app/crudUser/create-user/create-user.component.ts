@@ -43,6 +43,7 @@ export class CreateUserComponent implements OnInit {
     //thanh cong
     () => {
       this.message=null;
+      this.router.navigateByUrl('/login');
     },
     //that bai
       (error) => {
