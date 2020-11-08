@@ -12,7 +12,8 @@ import {LoginComponent} from './login/login.component';
 import {from} from 'rxjs';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/app/service/token-interceptor.service';
-import { EditPasswordComponent } from './crudUser/edit-password/edit-password.component' ;
+import { EditPasswordComponent } from './crudUser/edit-password/edit-password.component';
+import { ListHouseComponent } from './list-house/list-house.component' ;
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { EditPasswordComponent } from './crudUser/edit-password/edit-password.co
     HomeComponent,
     LoginComponent,
     EditPasswordComponent,
+    ListHouseComponent,
   ],
   imports: [
     BrowserModule,

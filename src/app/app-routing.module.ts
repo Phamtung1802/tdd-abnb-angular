@@ -5,6 +5,7 @@ import {EditUserComponent} from './crudUser/edit-user/edit-user.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import { EditPasswordComponent } from './crudUser/edit-password/edit-password.component';
+import { ListHouseComponent } from './list-house/list-house.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'edit-password',
     component: EditPasswordComponent
+  },
+  {
+    path: 'list-house',
+    component: ListHouseComponent
   }
 ];
 
