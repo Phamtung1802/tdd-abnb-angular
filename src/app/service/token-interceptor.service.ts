@@ -14,7 +14,8 @@ import { Iloginrequest } from '../object-interfaces/Iloginrequest';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(private injector: Injector) {
+
+  constructor(public auth: IloginrequestService, private injector: Injector) {
 
   }
 
@@ -28,3 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 }
+
+
+
+
