@@ -47,6 +47,7 @@ export class IloginrequestService {
       return authenticated;
 =======
       data => {this.appUser=data},
+      err => {
       });
       if(this.appUser.name.length>2){
         return true
