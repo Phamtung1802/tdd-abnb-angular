@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit, OnDestroy {
               private router: Router
   ) {
     try{
+    console.log(this.success);
+    console.log(this.router.getCurrentNavigation().extras.state.success);
     this.success = this.router.getCurrentNavigation().extras.state.success;
     } catch{
       console.log("not from signup");

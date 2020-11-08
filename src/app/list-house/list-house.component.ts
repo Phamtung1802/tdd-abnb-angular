@@ -17,6 +17,7 @@ export class ListHouseComponent implements OnInit {
   currentUser: AppUser={};
   userForm: FormGroup;
   message: string;
+  success: boolean = false;
 
 
   constructor(private appUserService: AppUserService, private router: Router, private fb: FormBuilder, private injector: Injector) {
@@ -30,6 +31,7 @@ export class ListHouseComponent implements OnInit {
       name: ['', [Validators.required]],
       status: ['', [Validators.required]],
       type: ['', [Validators.required]],
+      address: ['', [Validators.required]],
       bedroomNum: ['', [Validators.required]],
       bathroomNum: [''],
       description:['', [Validators.required]],
@@ -46,6 +48,7 @@ export class ListHouseComponent implements OnInit {
       bathroomNum: this.userForm.value.bathroomNum,
       description: this.userForm.value.description,
       pricePerDay: this.userForm.value.pricePerDay,
+      address: this.userForm.value.address,
       appUser:{
         id: this.currentUser.id
       }
@@ -89,6 +92,10 @@ export class ListHouseComponent implements OnInit {
   get pricePerDay(){
     return this.userForm.get('pricePerDay');
   }
+  get address(){
+    return this.userForm.get('address');
+  }
+
 
 
 }

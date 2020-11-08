@@ -55,9 +55,10 @@ export class EditUserComponent implements OnInit {
   }
   update(): void {
     const user = this.userForm.value;
-    this.appUserService.updateUser(this.currentUser.id, user).subscribe(() => {
+    this.appUserService.updateUser(this.currentUser.id, user).subscribe(data => {
       this.success=true;
       console.log('before time out success '+ this.success);
+      this.appUserService.changeData(data)
       setTimeout(()=> {
         console.log("timing");
         this.success=false;
