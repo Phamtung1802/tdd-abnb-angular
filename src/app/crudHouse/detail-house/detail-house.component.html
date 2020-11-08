@@ -1,0 +1,36 @@
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/breadcumb.jpg);">
+  <div class="bradcumbContent">
+    <p>See what's </p>
+    <h2>YOUR HOUSE</h2>
+  </div>
+</section>
+<br>
+<br>
+
+<div style="width: 90%;margin-left: 5%">
+  <a class="btn btn-outline-primary" [routerLink]="['/personal']">Back to list</a>
+  <br>
+  <br>
+  <h3>Song detail:</h3>
+  <div *ngIf="house">
+    <div>
+      <span class="font-weight-bold"></span>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+          <div class="album-thumb">
+            <img src="{{house.appImages}}" alt="" style="width: 200px;height: 200px"><br>
+          </div>
+      </div>
+    </div>
+
+    <span class="font-weight-bold">Name: </span><span>{{house.name}}</span><br>
+    <span class="font-weight-bold">Status:</span><span>{{house.status}}</span><br>
+    <span class="font-weight-bold">Type:</span><span>{{house.type}}</span><br>
+    <span class="font-weight-bold">BedroomNumber: </span><span>{{house.bedroomNum}}</span><br>
+    <span class="font-weight-bold">BathroomNumber: </span><span>{{house.bathroomNum}}</span><br>
+    <span class="font-weight-bold">Address:</span><span>{{house.address}}</span><br>
+    <span class="font-weight-bold">Description:</span><span>{{house.description}}</span><br>
+    <span class="font-weight-bold">Price per day:</span><span>{{house.pricePerDay}}</span><br>
+    <span class="font-weight-bold">Review:</span><span>{{house.appReviews}}</span><br>
+    <span class="font-weight-bold">Booking:</span><span>{{house.appBookingSet}}</span><br>
+  </div>
+</div>

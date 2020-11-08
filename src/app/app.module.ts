@@ -14,7 +14,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/app/service/token-interceptor.service';
 import { PwdChangeComponent } from './pwd-change/pwd-change.component';
 import { CreateHouseComponent } from './crudHouse/create-house/create-house.component';
-import { ListHouseComponent } from './crudHouse/list-house/list-house.component' ;
+import { ListHouseComponent } from './crudHouse/list-house/list-house.component';
+import { DetailHouseComponent } from './crudHouse/detail-house/detail-house.component' ;
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { ListHouseComponent } from './crudHouse/list-house/list-house.component'
     PwdChangeComponent,
     CreateHouseComponent,
     ListHouseComponent,
+    DetailHouseComponent,
   ],
   imports: [
     BrowserModule,

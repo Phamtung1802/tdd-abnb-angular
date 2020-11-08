@@ -10,7 +10,7 @@ import {ShareEventService} from '../service/share-event.service';
 })
 export class HomeComponent implements OnInit {
 
-  currentSong: string;
+  currentHouse: string;
 
   constructor(
     private cookie: CookieService,
@@ -19,9 +19,4 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onChanges(){
-    this.shareEvent.emitChange('123');
-  }
-
 }
