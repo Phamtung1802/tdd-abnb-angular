@@ -1,0 +1,77 @@
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/breadcumb.jpg);">
+  <div class="bradcumbContent">
+    <p>See what's </p>
+    <h2>NEW HOUSE</h2>
+  </div>
+</section>
+<br>
+<br>
+<form [formGroup]= "houseForm" style="width: 60%; margin-left: 20%; margin-top:3%">
+  <div class="form-group">
+    <label>Song Name</label>
+    <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+         class="alert alert-danger">
+      <div *ngIf="name.errors.required">
+        House Name Not Empty
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Type</label>
+      <input type="text" class="form-control" formControlName="type"  placeholder="Enter Type">
+    </div>
+    <div class="form-group">
+      <label>Status</label>
+      <input type="text" class="form-control" formControlName="status"  placeholder="Enter Status">
+    </div>
+    <div class="form-group">
+      <label>Bedroom Number</label>
+      <input type="text" class="form-control" formControlName="bedroomNum"  placeholder="Enter Your Bedroom Number">
+    </div>
+    <div class="form-group">
+      <label>Bathroom Number</label>
+      <input type="text" class="form-control" formControlName="bathroomNum"  placeholder="Enter Your Bathroom Number">
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <input type="text" class="form-control" formControlName="address"  placeholder="Enter Your Address">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Description</label>
+      <textarea class="form-control " formControlName="description" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter description" rows="2" cols="5"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Price Per Day</label>
+      <input type="text" class="form-control" formControlName="pricePerDay"  placeholder="Enter Your Price">
+    </div>
+    <div class="form-group">
+      <label>Longitude</label>
+      <input type="text" class="form-control" formControlName="type"  placeholder="Enter your longitude to locate your house">
+    </div>
+    <div class="form-group">
+      <label>Latitude</label>
+      <input type="text" class="form-control" formControlName="latitude"  placeholder="Enter your latitude to locate your house">
+    </div>
+    <div>
+      <label>Choose Cover Art Photo</label>
+      <input type="file" class="form-control" (change)="checkCoverArtFile($event)" placeholder="Cover Art">
+      <br>
+      <div *ngIf="checkedCoverArtFile" class="alert alert-danger">
+        Just image file only
+      </div>
+      <div class="progress" *ngIf="process$  as progress">
+        <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': progress + '%' }"></div>
+      </div>
+      <div *ngIf="message" class="alert alert-success" style="height:40px">
+        <p style="font-size:20px; margin-top: -15px">{{message}}</p>
+      </div>
+    </div>
+    <br>
+  </div>
+  <button  class="btn btn-success" [routerLink]="['/personal']" style="float:right">Exit</button>
+  <button type="submit" [disabled]="checkform()"  class="btn btn-primary"
+          (click)="submit()" style="float:right; margin-right:1%">Submit</button>
+</form>
+<br><br>
+

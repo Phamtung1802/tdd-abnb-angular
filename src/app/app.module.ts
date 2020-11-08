@@ -12,7 +12,8 @@ import {LoginComponent} from './login/login.component';
 import {from} from 'rxjs';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/app/service/token-interceptor.service';
-import { PwdChangeComponent } from './pwd-change/pwd-change.component' ;
+import { PwdChangeComponent } from './pwd-change/pwd-change.component';
+import { CreateHouseComponent } from './crudHouse/create-house/create-house.component' ;
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { PwdChangeComponent } from './pwd-change/pwd-change.component' ;
     HomeComponent,
     LoginComponent,
     PwdChangeComponent,
+    CreateHouseComponent,
   ],
   imports: [
     BrowserModule,
