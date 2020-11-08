@@ -15,7 +15,7 @@ import { IloginrequestService } from './service/iloginrequest.service';
 export class AppComponent implements OnInit{
   title = 'tdd-abnb-angular';
   loginRequest: Iloginrequest;
-  currentUser: AppUser={
+  currentUser: AppUser = {
     name:""
   };
 
@@ -24,7 +24,6 @@ export class AppComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.appUserService.currentUser.subscribe(data=> this.currentUser=data)
     let token: Object = JSON.parse(sessionStorage.getItem('rbnbuser'));
     if(token!=null){
     this.iLoginReqestService.firstLogin().subscribe(
