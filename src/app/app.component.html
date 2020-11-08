@@ -31,7 +31,7 @@
           <a [routerLink]="'/login'"  class="mx-1">Login</a> | <a [routerLink]="'/register'" class="mx-1">Register</a>
       </div>
       <div *ngIf="currentUser.name!=''" class="form-inline my-2 my-lg-0 navbar-nav ml-auto">
-        <a [routerLink]="'/login'"  class="mx-1">Welcome, {{currentUser.name}}</a> | <a [routerLink]="['/edit-user']" class="mx-1">Edit</a> | <a (click)="logOut()" href="#" class="mx-1">Logout</a>
+        <a [routerLink]="'/login'"  class="mx-1">Welcome, {{currentUser.name}}</a> | <a [routerLink]="['/edit-user']" class="mx-1">Edit</a> | <a [routerLink]="['/edit-password']" class="mx-1">Change Password</a> | <a (click)="logOut()" href="#" class="mx-1">Logout</a>
       </div>
     </ul>
 

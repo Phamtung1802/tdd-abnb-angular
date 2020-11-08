@@ -22,7 +22,7 @@ export class EditUserComponent implements OnInit {
 
   constructor(private appUserService: AppUserService,
               private fb: FormBuilder,
-              private router: Router, ) {
+              private router: Router) {
 
               }
 
