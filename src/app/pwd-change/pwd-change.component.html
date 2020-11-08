@@ -11,7 +11,8 @@
       formControlName="oldPwd"
       id="oldPwd"
       type="password"
-      class="form-control" />
+      class="form-control"
+     (blur)="checkPass()"/>
     <div class="alert alert-danger" *ngIf="oldPwd.touched && oldPwd.invalid">
       <div *ngIf="oldPwd.errors.required">Old Password is required.</div>
       <div *ngIf="oldPwd.errors.shouldBe1234">Old Password is not valid.</div>

@@ -36,5 +36,7 @@ export class PwdChangeComponent implements OnInit {
   get confirmPwd() {
     return this.formChangedPassword.get('confirmPwd');
   }
-
+  checkPass() {
+    console.log(this.oldPwd.value);
+  }
 }
