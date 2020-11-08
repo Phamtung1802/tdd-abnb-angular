@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AppUser} from '../object-interfaces/AppUser';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import { IloginrequestService } from './iloginrequest.service';
+import { AppProperty } from '../object-interfaces/AppProperty';
 
 const API_URL = 'http://localhost:8080';
 @Injectable({
@@ -35,6 +36,11 @@ export class AppUserService {
   createUser(user: AppUser): Observable<AppUser> {
     return this.http.post<AppUser>(API_URL + `/users`, user);
   }
+
+  createHouse(property: AppProperty): Observable<AppUser> {
+    return this.http.post<AppUser>(API_URL + `/property`, property);
+  }
+
   updateUser(id: number, user: AppUser): Observable<AppUser> {
     return this.http.patch<AppUser>(API_URL + `/users/${id}`, user);
   }
