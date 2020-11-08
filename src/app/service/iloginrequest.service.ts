@@ -33,6 +33,7 @@ export class IloginrequestService {
     const token = this.getToken();
     let authenticated: boolean;
     this.http.post(API_URL + `/token-authenticate`,"").subscribe(
+<<<<<<< Updated upstream
       data => {
         console.log(data);
         authenticated= true;
@@ -44,6 +45,14 @@ export class IloginrequestService {
       console.log("token hop le "+authenticated)
       console.log(this.appUser);
       return authenticated;
+=======
+      data => {this.appUser=data},
+      });
+      if(this.appUser.name.length>2){
+        return true
+      }
+      return false;
+>>>>>>> Stashed changes
   }
 
   getLoginRequest(login: ILogin): Observable<Iloginrequest> {
