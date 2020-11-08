@@ -38,6 +38,10 @@ export class AppUserService {
   updateUser(id: number, user: AppUser): Observable<AppUser> {
     return this.http.patch<AppUser>(API_URL + `/users/${id}`, user);
   }
+  updateUserPassword(id: number, user: AppUser): Observable<AppUser> {
+    return this.http.patch<AppUser>(API_URL + `/users/edit-password/${id}`, user);
+  }
+
   getUserById(id: number): Observable<AppUser> {
     return this.http.get<AppUser>( API_URL + `/users/${id}`);
   }

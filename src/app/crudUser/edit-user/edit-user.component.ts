@@ -56,7 +56,6 @@ export class EditUserComponent implements OnInit {
   update(): void {
     const user = this.userForm.value;
     this.appUserService.updateUser(this.currentUser.id, user).subscribe(() => {
-      this.loginRequest = JSON.parse((sessionStorage.getItem('user')));
       this.success=true;
       console.log('before time out success '+ this.success);
       setTimeout(()=> {

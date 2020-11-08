@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,6 +16,7 @@ export class EditPasswordComponent implements OnInit {
   userForm: FormGroup;
   loginRequest: Iloginrequest;
   success: boolean=false;
+  failure: boolean=false;
   that = this;
 
 
@@ -24,15 +26,42 @@ export class EditPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.appUserService.getData().subscribe(data=>{
-      console.log("Init Edit Comp");
       this.currentUser= data;
-      console.log(this.currentUser);
     });
     this.userForm = this.fb.group({
-      id: new FormControl(),
-      password: new FormControl(),
-      newPassword: new FormControl()
+      oldPassword: new FormControl(),
+      newPassword: new FormControl(),
+      confirmNewPassword: new FormControl()
    });
   }
+
+  update(): void {
+    const user = {
+     password: this.userForm.value.newPassword
+    };
+    console.log(this.userForm.value.newPassword);
+    console.log(this.userForm.value.confirmNewPassword);
+
+    if(this.userForm.value.newPassword===this.userForm.value.confirmNewPassword&&this.userForm.value.newPassword!=null&&this.userForm.value.confirmNewPassword!=null){
+      this.appUserService.updateUserPassword(this.currentUser.id, user).subscribe(() => {
+        this.success=true;
+        console.log('before time out success '+ this.success);
+        setTimeout(()=> {
+          console.log("timing");
+          this.success=false;
+          console.log(this.success);
+        }, 3000);
+        console.log('timed out success '+ this.success);
+      });
+    } else{
+      this.failure=true;
+      setTimeout(()=> {
+        this.failure=false;
+      }, 3000);
+    }
+  }
+
+
+
 
 }
