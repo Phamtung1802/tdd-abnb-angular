@@ -51,8 +51,7 @@ export class CreateHouseComponent implements OnInit {
             sessionStorage.removeItem('rbnbuser');
           }
         }
-      )}
-    console.log("edit comp"+this.currentUser);
+      ); }
 
     this.houseForm = this.fb.group({
       name: ['', [Validators.required]],
