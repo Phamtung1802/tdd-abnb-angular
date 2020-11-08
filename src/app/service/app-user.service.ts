@@ -36,7 +36,7 @@ export class AppUserService {
     return this.http.post<AppUser>(API_URL + `/users`, user);
   }
   updateUser(id: number, user: AppUser): Observable<AppUser> {
-    return this.http.put<AppUser>(API_URL + `/users/${id}`, user);
+    return this.http.patch<AppUser>(API_URL + `/users/${id}`, user);
   }
   getUserById(id: number): Observable<AppUser> {
     return this.http.get<AppUser>( API_URL + `/users/${id}`);

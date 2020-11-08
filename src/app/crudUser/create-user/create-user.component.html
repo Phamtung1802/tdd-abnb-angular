@@ -37,7 +37,27 @@
     <div *ngIf="passWordUser.invalid && (nameUser.dirty || nameUser.touched)"
          class="alert alert-danger my-1">
       <div *ngIf="passWordUser.errors.required" class="my-1">
-        Password Not Empty
+        Password Required
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Real Name:</label>
+    <input type="text" class="form-control" formControlName="realName" placeholder="Enter Real Name">
+    <div *ngIf="(nameUser.dirty || nameUser.touched)"
+         class="alert alert-danger my-1">
+      <div *ngIf="passWordUser.errors.required" class="my-1">
+        Real Name Required
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Address:</label>
+    <input type="text" class="form-control" formControlName="address" placeholder="Enter address">
+    <div *ngIf="(nameUser.dirty || nameUser.touched)"
+         class="alert alert-danger my-1">
+      <div *ngIf="passWordUser.errors.required" class="my-1">
+        Address Required
       </div>
     </div>
   </div>
@@ -66,7 +86,6 @@
   <br>
   <div *ngIf="message!=null"class="alert alert-danger my-1">
     <div [innerHTML]="message">
-
     </div>
   </div>
 

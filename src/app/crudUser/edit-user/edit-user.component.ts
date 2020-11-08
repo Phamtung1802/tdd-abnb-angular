@@ -33,8 +33,10 @@ export class EditUserComponent implements OnInit {
     this.userForm = this.fb.group({
       id: new FormControl(),
       name: new FormControl(),
+      realName: new FormControl(),
+      address: new FormControl(),
       email: new FormControl(),
-      password: new FormControl(),
+      avatar: new FormControl(),
       phoneNumber: new FormControl()
     });
   }
@@ -54,8 +56,6 @@ export class EditUserComponent implements OnInit {
     });
   }
   click():void{
-    this.currentUser.name="subthanhcong";
-    this.appUserService.changeData(this.currentUser);
     console.log('edit click');
     console.log(this.currentUser);
   }

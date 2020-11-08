@@ -1,26 +1,27 @@
-  <div class="bradcumbContent">
-    <p>See what's </p>
-    <h2>EDIT MY PROFILE</h2>
-  </div>
-
 <br>
 <br>
 <form [formGroup]="userForm" style="width: 80%; margin-left: 10%; margin-top:3%">
   <div class="form-group">
-    <input type="text" class="form-control" [ngModel]="currentUser.id"  formControlName="id">
     <label>User Name:</label>
-    <input type="text" class="form-control" [ngModel]="currentUser.name" placeholder="Enter name" formControlName="name">
-
+    <input type="text" class="form-control" [(ngModel)]="currentUser.name" placeholder="Enter name" formControlName="name" disabled>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" [ngModel]="currentUser.email" formControlName="email">
+    <label>Email:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.email" formControlName="email">
     <br>
-    <input type="password" class="form-control" [ngModel]="currentUser.password" placeholder="Enter password" formControlName="password">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" [ngModel]="currentUser.phoneNumber" formControlName="phoneNumber">
+    <label>Phone Number:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.phoneNumber" formControlName="phoneNumber">
     <br>
-    <input type="password" class="form-control" [ngModel]="currentUser.avatar" placeholder="Avatar" formControlName="password">
+    <label>Real Name:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.realName" formControlName="realName">
+    <br>
+    <label>Address:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.address" formControlName="address">
+    <br>
+    <label>Avatar:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.avatar" placeholder="Avatar" formControlName="avatar">
   </div>
   <br>
   <button class="btn btn-success" [routerLink]="['']" style="float:right">Exit</button>

@@ -19,7 +19,7 @@ const routes: Routes = [
     component: CreateUserComponent,
   },
   {
-    path: 'editUser',
+    path: 'edit-user',
     component: EditUserComponent
   },
 ];
