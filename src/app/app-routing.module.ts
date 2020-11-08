@@ -4,6 +4,7 @@ import {CreateUserComponent} from './crudUser/create-user/create-user.component'
 import {EditUserComponent} from './crudUser/edit-user/edit-user.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
+import {PwdChangeComponent} from './pwd-change/pwd-change.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'pwd-change',
-    component: CreateUserComponent,
+    component: PwdChangeComponent,
   },
 ];
 
