@@ -23,11 +23,12 @@
     <label>Avatar:</label>
     <input type="text" class="form-control" [(ngModel)]="currentUser.avatar" placeholder="Avatar" formControlName="avatar">
   </div>
-  <br>
   <button class="btn btn-success" [routerLink]="['']" style="float:right">Exit</button>
   <button type="submit" class="btn btn-primary" (click)="update()"
           style="float:right; margin-right:1%">Save
   </button>
-  <button (click)="click()">click</button>
+  <br><br>
+  <div class="alert alert-success" [hidden]="!success"> Update Success!! </div>
+  <!-- <button (click)="click()">click</button> -->
 </form>
 <br><br>
