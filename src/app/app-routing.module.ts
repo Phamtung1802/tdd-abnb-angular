@@ -5,6 +5,9 @@ import {EditUserComponent} from './crudUser/edit-user/edit-user.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {CreateHouseComponent} from './crudHouse/create-house/create-house.component';
+import {EditHouseComponent} from './crudHouse/edit-house/edit-house.component';
+import {DetailHouseComponent} from './crudHouse/detail-house/detail-house.component';
+import {ListHouseComponent} from './crudHouse/list-house/list-house.component';
 
 const routes: Routes = [
   {
@@ -30,6 +33,18 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateHouseComponent,
+  },
+  {
+    path: 'edit/:id',
+    component: EditHouseComponent,
+  },
+  {
+    path: 'detail/:id',
+    component: DetailHouseComponent,
+  },
+  {
+    path: 'personal',
+    component: ListHouseComponent,
   },
 ];
 

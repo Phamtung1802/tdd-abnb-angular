@@ -15,7 +15,12 @@ import { TokenInterceptor } from 'src/app/service/token-interceptor.service';
 import { PwdChangeComponent } from './pwd-change/pwd-change.component';
 import { CreateHouseComponent } from './crudHouse/create-house/create-house.component';
 import { ListHouseComponent } from './crudHouse/list-house/list-house.component';
-import { DetailHouseComponent } from './crudHouse/detail-house/detail-house.component' ;
+import { DetailHouseComponent } from './crudHouse/detail-house/detail-house.component';
+import { EditHouseComponent } from './crudHouse/edit-house/edit-house.component' ;
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,18 +32,21 @@ import { DetailHouseComponent } from './crudHouse/detail-house/detail-house.comp
     CreateHouseComponent,
     ListHouseComponent,
     DetailHouseComponent,
+    EditHouseComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true}
+      multi: true},
   ],
   bootstrap: [AppComponent]
 })

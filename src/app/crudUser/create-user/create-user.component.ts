@@ -11,7 +11,7 @@ import { AppUser } from 'src/app/object-interfaces/AppUser';
 })
 export class CreateUserComponent implements OnInit {
 
-  message: String= null;
+  message: string = null;
 
   userForm: FormGroup;
   constructor(private fb: FormBuilder,
