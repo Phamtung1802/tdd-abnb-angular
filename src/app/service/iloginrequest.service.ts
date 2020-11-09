@@ -24,20 +24,26 @@ export class IloginrequestService {
   public getToken(): string {
     if(JSON.parse(sessionStorage.getItem('rbnbuser'))!=null){
         this.token = JSON.parse(sessionStorage.getItem('rbnbuser'));
-    }
+    } else this.token= {"token":""}
     return this.token.token;
   }
 
   public isAuthenticated(): boolean {
     // get the token
     const token = this.getToken();
+    let authenticated: boolean;
     this.http.post(API_URL + `/token-authenticate`,"").subscribe(
-      data => {this.appUser=data},
-      err => {});
-      if(this.appUser.name.length>2){
-        return true
-      }
-       else return false;
+      data => {
+        console.log(data);
+        authenticated= true;
+      },
+      err => {
+        authenticated= false;
+        console.log(err);
+      });
+      console.log("token hop le "+authenticated)
+      console.log(this.appUser);
+      return authenticated;
   }
 
   getLoginRequest(login: ILogin): Observable<Iloginrequest> {

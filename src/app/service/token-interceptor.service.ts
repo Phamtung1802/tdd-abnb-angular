@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector, Input } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -9,20 +9,29 @@ import {
 import { IloginrequestService } from 'src/app/service/iloginrequest.service';
 import { Observable, throwError} from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Iloginrequest } from '../object-interfaces/Iloginrequest';
 
 
 @Injectable()
-export class TokenInterceptor implements HttpInterceptor {  constructor(public auth: IloginrequestService) {}  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if(this.auth.isAuthenticated){
+export class TokenInterceptor implements HttpInterceptor {
+
+  constructor(public auth: IloginrequestService, private injector: Injector) {
+
+  }
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const requestService=this.injector.get(IloginrequestService);
+    console.log("token o duoi");
+    console.log(`Bearer ${requestService.getToken()}`);
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.auth.getToken()}`
+          Authorization: `Bearer ${requestService.getToken()}`
         }
       });
-    } else if(sessionStorage.getItem('rbnbuser')!=null){
-      sessionStorage.removeItem('rbnbuser');
-      window.location.assign("http://localhost:4200");
-    }
     return next.handle(request);
   }
 }
+
+
+
+

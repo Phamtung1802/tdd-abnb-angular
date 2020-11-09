@@ -27,10 +27,12 @@
 
                 </div>
               </div>
-              <button type="submit" (click)="findUser()" class="btn oneMusic-btn mt-30">Login
-<!--                <a [href]="'http://localhost:4200'">Login</a>-->
+              <button type="submit" (click)="findUser()" class="btn oneMusic-btn mt-30">
+                Login
               </button>
             </form>
+            <div class="alert alert-success" [hidden]="!success"> Signup Success, please login </div>
+            <br>
           </div>
         </div>
       </div>

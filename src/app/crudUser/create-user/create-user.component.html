@@ -7,7 +7,6 @@
 <br>
 <br>
 <form [formGroup]="userForm" style="width: 80%; margin-left: 10%; margin-top:3%">
-
   <div class="form-group">
     <label>User Name:</label>
     <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
@@ -37,8 +36,22 @@
     <div *ngIf="passWordUser.invalid && (nameUser.dirty || nameUser.touched)"
          class="alert alert-danger my-1">
       <div *ngIf="passWordUser.errors.required" class="my-1">
-        Password Not Empty
+        Password Required
       </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Real Name:</label>
+    <input type="text" class="form-control" formControlName="realName" placeholder="Enter Real Name">
+      <div *ngIf="realName.errors?.required" class="my-1 alert alert-danger">
+        Real Name Required
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Address:</label>
+    <input type="text" class="form-control" formControlName="address" placeholder="Enter address">
+      <div *ngIf="address.errors?.required" class="my-1 alert alert-danger">
+        Address Required
     </div>
   </div>
   <div class="form-group">
@@ -66,7 +79,6 @@
   <br>
   <div *ngIf="message!=null"class="alert alert-danger my-1">
     <div [innerHTML]="message">
-
     </div>
   </div>
 

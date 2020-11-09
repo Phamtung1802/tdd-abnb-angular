@@ -12,7 +12,8 @@ import {LoginComponent} from './login/login.component';
 import {from} from 'rxjs';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/app/service/token-interceptor.service';
-import { PwdChangeComponent } from './pwd-change/pwd-change.component' ;
+import { EditPasswordComponent } from './crudUser/edit-password/edit-password.component';
+import { ListHouseComponent } from './list-house/list-house.component' ;
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { PwdChangeComponent } from './pwd-change/pwd-change.component' ;
     EditUserComponent,
     HomeComponent,
     LoginComponent,
-    PwdChangeComponent,
+    EditPasswordComponent,
+    ListHouseComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { PwdChangeComponent } from './pwd-change/pwd-change.component' ;
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true}
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

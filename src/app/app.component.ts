@@ -1,6 +1,7 @@
 import { tokenName } from '@angular/compiler';
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute, Event, ParamMap, Router} from '@angular/router';
+import { cpuUsage } from 'process';
 import { AppUser } from './object-interfaces/AppUser';
 import {Iloginrequest} from './object-interfaces/Iloginrequest';
 import { AppUserService } from './service/app-user.service';
@@ -14,20 +15,23 @@ import { IloginrequestService } from './service/iloginrequest.service';
 export class AppComponent implements OnInit{
   title = 'tdd-abnb-angular';
   loginRequest: Iloginrequest;
-  currentUser: AppUser={
+  currentUser: AppUser = {
     name:""
   };
 
-  constructor(private appUserService: AppUserService, private iloginRequestService: IloginrequestService){};
+  constructor(private appUserService: AppUserService, private iLoginReqestService: IloginrequestService){
+  };
 
 
   ngOnInit(): void {
     let token: Object = JSON.parse(sessionStorage.getItem('rbnbuser'));
     if(token!=null){
-    this.iloginRequestService.firstLogin().subscribe(
+    this.iLoginReqestService.firstLogin().subscribe(
       //Valid
       data=>{
-          this.currentUser=data;
+          this.appUserService.changeData(data);
+          this.appUserService.getData().subscribe(data=> this.currentUser=data);
+          console.log("Main comp current user sau khi subscribe");
           console.log(this.currentUser);
       },
       //err
@@ -35,10 +39,11 @@ export class AppComponent implements OnInit{
         if(error.error.exception=="com.TDD.ABnB.exceptions.InvalidTokenException"){
             sessionStorage.removeItem('rbnbuser');
         }
-      }
-    )}
+      });
+    }
   }
   onChanges() {
+
     this.loginRequest = JSON.parse((sessionStorage.getItem('rbnbuser')));
     console.log(this.loginRequest==null);
   }
@@ -59,6 +64,19 @@ export class AppComponent implements OnInit{
       error => {
         console.log(error.error.message);
       }
+    );
+  }
+
+  click(){
+    console.log("Click ");
+    console.log(this.currentUser);
+    console.log("o duoi nay phai co mot thong bao nua");
+    this.appUserService.getData().subscribe(
+      data=> {
+      console.log("Hello "+data);
+    },
+    err =>console.log("Err"),
+    ()=>console.log("completed!")
     );
   }
 }

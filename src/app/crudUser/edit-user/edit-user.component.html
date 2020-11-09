@@ -1,30 +1,34 @@
-<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(../../../assets/img/bg-img/breadcumb.jpg);">
-
-<div class="bradcumbContent">
-    <p>See what's </p>
-    <h2>EDIT MY PROFILE</h2>
-  </div>
-</section>
 <br>
 <br>
 <form [formGroup]="userForm" style="width: 80%; margin-left: 10%; margin-top:3%">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
-    <br>
-    <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
+    <label>User Name:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.name" placeholder="Enter name" formControlName="name" disabled>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control"  placeholder="Enter Phone Number" formControlName="phoneNumber">
+    <label>Email:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.email" formControlName="email">
     <br>
-    <input type="password" class="form-control" placeholder="Enter Avatar Link" formControlName="password">
   </div>
-  <br>
+  <div class="form-group">
+    <label>Phone Number:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.phoneNumber" formControlName="phoneNumber">
+    <br>
+    <label>Real Name:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.realName" formControlName="realName">
+    <br>
+    <label>Address:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.address" formControlName="address">
+    <br>
+    <label>Avatar:</label>
+    <input type="text" class="form-control" [(ngModel)]="currentUser.avatar" placeholder="Avatar" formControlName="avatar">
+  </div>
   <button class="btn btn-success" [routerLink]="['']" style="float:right">Exit</button>
   <button type="submit" class="btn btn-primary" (click)="update()"
           style="float:right; margin-right:1%">Save
   </button>
+  <br><br>
+  <div class="alert alert-success" [hidden]="!success"> Update Success!! </div>
+  <!-- <button (click)="click()">click</button> -->
 </form>
-<a routerLink="/pwd-change">
-  <button type="button" class="btn btn-primary" >ChangedPassword</button>
-</a>
 <br><br>
