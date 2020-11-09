@@ -96,10 +96,15 @@
   </div>
   <br>
   <br>
-  <div *ngIf="message!=null"class="alert alert-danger my-1">
+  <div *ngIf="message!=null&&message!='Success!!!'"class="alert alert-danger my-1">
     <div [innerHTML]="message">
     </div>
   </div>
+  <div *ngIf="message=='Success!!!'"class="alert alert-success my-1">
+    <div [innerHTML]="message">
+    </div>
+  </div>
+
   <div [hidden]="!success"class="alert alert-success my-1">
   </div>
 
