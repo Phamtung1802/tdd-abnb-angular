@@ -61,6 +61,7 @@ export class ListHouseComponent implements OnInit,OnDestroy {
     //thanh cong
     () => {
       this.message="Success!!!";
+     this.appUserService.getData().subscribe(data=> this.appUserService.changeData(data) );
       // this.router.navigateByUrl('/login',{state: {success:true}});
     },
     //that bai
