@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppProperty } from '../object-interfaces/AppProperty';
@@ -12,7 +12,7 @@ import { IloginrequestService } from '../service/iloginrequest.service';
   templateUrl: './list-house.component.html',
   styleUrls: ['./list-house.component.css']
 })
-export class ListHouseComponent implements OnInit {
+export class ListHouseComponent implements OnInit,OnDestroy {
   house: AppProperty={};
   currentUser: AppUser={};
   userForm: FormGroup;
@@ -24,6 +24,9 @@ export class ListHouseComponent implements OnInit {
     this.appUserService.getData().subscribe(data=>{
       this.currentUser= data;
     });
+  }
+  ngOnDestroy(): void {
+    this.message=null;
   }
 
   ngOnInit(): void {
@@ -57,7 +60,7 @@ export class ListHouseComponent implements OnInit {
     this.appUserService.createHouse(property).subscribe(
     //thanh cong
     () => {
-      this.message=null;
+      this.message="Success!!!";
       // this.router.navigateByUrl('/login',{state: {success:true}});
     },
     //that bai
