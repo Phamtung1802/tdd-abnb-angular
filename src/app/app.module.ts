@@ -40,7 +40,6 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [
     {
