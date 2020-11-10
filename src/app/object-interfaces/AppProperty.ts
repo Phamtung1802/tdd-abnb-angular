@@ -21,5 +21,4 @@ export interface AppProperty{
   appBookingSet?: Set<AppBooking>;
   appReviews?: AppReview[];
   appImages?: AppImage[];
-  rating?:number;
 }
