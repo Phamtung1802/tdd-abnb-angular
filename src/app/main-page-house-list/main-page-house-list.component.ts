@@ -23,6 +23,16 @@ export class MainPageHouseListComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.appUserService.getAllProperty().subscribe(
+      //Success
+      data=>{
+        this.propertyPage=data;
+      }
+    )
+  }
+
+  nextPage(){
+
   }
 
 }

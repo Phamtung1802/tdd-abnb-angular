@@ -54,4 +54,7 @@ export class AppUserService {
   getAllUser(): Observable<AppUser[]> {
     return this.http.get<AppUser[]>( API_URL + `/users/users`);
   }
+  getAllProperty(): Observable<AppUser[]> {
+    return this.http.get<AppUser[]>( API_URL + `/property`);
+  }
 }

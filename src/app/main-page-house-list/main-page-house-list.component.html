@@ -1,5 +1,5 @@
 <div class="py-4" style="background-color: white;">
-  <table>
+  <table class="col-12">
     <tbody>
       <tr *ngFor="let prop of propertyPage index as i;">
         <div class="container emp-profile">
@@ -7,7 +7,7 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="profile-img">
-                  <img [src]="prop.appImages[0]" alt=""/>
+                  <img [src]="prop.appImages[0]" alt="Hello"/>
                 </div>
               </div>
               <div class="col-md-6">
@@ -18,12 +18,12 @@
                     {{prop.type}}
                   </h6>
                   <p class="proile-rating">Rating : <span>{{prop.rating}}/5</span></p>
-                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <ul class="nav nav-tabs" [id]="'myTab'+prop.id" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="des-tab" data-toggle="tab" href="#des" role="tab" aria-controls="home" aria-selected="true">About</a>
+                      <a class="nav-link active" [id]="'des'+prop.id+'-tab'" data-toggle="tab" [href]="'#des'+prop.id" role="tab" aria-controls="home" aria-selected="true">About</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="rev-tab" data-toggle="tab" href="#rev" role="tab" aria-controls="rev" aria-selected="false">Reviews</a>
+                      <a class="nav-link" [id]="'rev'+prop.id+'-tab'" data-toggle="tab" [href]="'#rev'+prop.id" role="tab" aria-controls="rev" aria-selected="false">Reviews</a>
                     </li>
                   </ul>
                 </div>
@@ -32,17 +32,20 @@
             <div class="row pt-2">
               <div class="col-md-4">
                 <div class="profile-work">
-                  <p>Bedroom Number</p>
-                  <div href="">{{prop.bedroomNum}}</div><br/>
-                  <p>Bathroom Number</p>
-                  <div href="">{{prop.bathroomNum}}</div><br/>
-                  <p>Address</p>
-                  <div href="">{{prop.address}}</div><br/>
+                  <p>Bedroom Number<br>
+                    {{prop.bedroomNum}}
+                  </p>
+                  <p>Bathroom Number<br>
+                    {{prop.bathroomNum}}
+                  </p>
+                  <p>Address<br>
+                    {{prop.address}}
+                  </p>
                 </div>
               </div>
               <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
-                  <div class="tab-pane fade show active" id="des" role="tabpanel" aria-labelledby="des-tab">
+                <div class="tab-content profile-tab h-100" id="myTabContent">
+                  <div class="tab-pane fade show active" [id]="'des'+prop.id" role="tabpanel" aria-labelledby="des-tab">
                     <div class="row">
                       <div class="col-12">
                         <label>Description</label>
@@ -52,15 +55,11 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="tab-content profile-tab" id="myTabContent">
-                  <div class="tab-pane fade show active" id="rev" role="tabpanel" aria-labelledby="rev-tab">
-                    <div class="row"><!-- REVIEW TAB-->
-                      <div class="col-12">
-                        <ul>
-                          <li *ngFor="let item of prop.appReviews"> ... </li>
-                        </ul>
-                      </div>
+                  <div class="tab-pane fade show h-100" [id]="'rev'+prop.id" role="tabpanel" aria-labelledby="des-tab">
+                    <div class="row">
+                      <ul class="col col-12">
+                        <app-review-page [reviews]="prop.appReviews" [propid]="prop.id"></app-review-page>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -68,6 +67,7 @@
             </div>
           </div>
         </div>
+        <hr>
       </tr>
     </tbody>
   </table>

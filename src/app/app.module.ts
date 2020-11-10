@@ -16,6 +16,7 @@ import { EditPasswordComponent } from './crudUser/edit-password/edit-password.co
 import { ListHouseComponent } from './list-house/list-house.component';
 import { MainPageHouseListComponent } from './main-page-house-list/main-page-house-list.component' ;
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ReviewPageComponent } from './review-page/review-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     EditPasswordComponent,
     ListHouseComponent,
     MainPageHouseListComponent,
+    ReviewPageComponent,
   ],
   imports: [
     BrowserModule,
