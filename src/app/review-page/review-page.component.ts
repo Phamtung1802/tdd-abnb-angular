@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AppReview } from '../object-interfaces/AppReview';
 
 @Component({
   selector: 'app-review-page',
@@ -9,7 +10,7 @@ export class ReviewPageComponent implements OnInit {
 
   p: number = 1;
   @Input()
-  reviews: any[] = [];
+  reviews: AppReview[] = [];
   @Input()
   propid:number;
 

@@ -1,5 +1,6 @@
 <li class="col-12" style="height: 200px;" [id]="'reviewnha'+review.id" *ngFor="let review of reviews| paginate: { id:'reviewnha'+propid,itemsPerPage: 1, currentPage:p,totalItems: reviews.length }">
   <H3>{{review.appUser.name}}</H3>
-  {{review.comment}}
+  <p>{{review.comment}}&nbsp;</p>
 </li>
+
 <pagination-controls (pageChange)="p=$event" [id]="'reviewnha'+propid"></pagination-controls>
