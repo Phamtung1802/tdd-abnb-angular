@@ -6,6 +6,7 @@ import { AppUser } from '../object-interfaces/AppUser';
 import { AppUserService } from '../service/app-user.service';
 import { Iloginrequest } from 'src/app/object-interfaces/Iloginrequest';
 import { IloginrequestService } from '../service/iloginrequest.service';
+import { AppImage } from '../object-interfaces/AppImage';
 
 @Component({
   selector: 'app-list-house',
@@ -18,6 +19,7 @@ export class ListHouseComponent implements OnInit,OnDestroy {
   userForm: FormGroup;
   message: string;
   success: boolean = false;
+  imageArray: AppImage[]=[];
 
 
   constructor(private appUserService: AppUserService, private router: Router, private fb: FormBuilder, private injector: Injector) {
@@ -38,11 +40,18 @@ export class ListHouseComponent implements OnInit,OnDestroy {
       bedroomNum: ['', [Validators.required]],
       bathroomNum: [''],
       description:['', [Validators.required]],
-      pricePerDay:['', [Validators.required]]
+      pricePerDay:['', [Validators.required]],
+      appImages: ['']
     });
   }
 
   createHouse(){
+    let image: AppImage = {
+      url: this.userForm.value.appImages
+    }
+    this.imageArray.push(image
+);
+
     let property: AppProperty={
       name: this.userForm.value.name,
       status: this.userForm.value.status,
@@ -51,11 +60,14 @@ export class ListHouseComponent implements OnInit,OnDestroy {
       bathroomNum: this.userForm.value.bathroomNum,
       description: this.userForm.value.description,
       pricePerDay: this.userForm.value.pricePerDay,
+      appImages: this.imageArray,
       address: this.userForm.value.address,
       appUser:{
         id: this.currentUser.id
       }
     };
+    console.log("Property");
+    console.log(property);
 
     this.appUserService.createHouse(property).subscribe(
     //thanh cong
@@ -71,6 +83,7 @@ export class ListHouseComponent implements OnInit,OnDestroy {
         }
       }
     );
+    this.imageArray=[];
   }
 
   get name() {
@@ -98,6 +111,9 @@ export class ListHouseComponent implements OnInit,OnDestroy {
   }
   get address(){
     return this.userForm.get('address');
+  }
+  get appImages(){
+    return this.userForm.get('appImages');
   }
 
 
