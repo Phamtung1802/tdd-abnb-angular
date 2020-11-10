@@ -37,6 +37,7 @@ export class CreateUserComponent implements OnInit {
       phoneNumber: this.userForm.value.phoneNumber,
       avatar: this.userForm.value.avatar,
       realName: this.userForm.value.realName,
+      address: this.userForm.value.address,
       appRole:{
         id: 2 as number
       }

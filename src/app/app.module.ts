@@ -13,7 +13,8 @@ import {from} from 'rxjs';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/app/service/token-interceptor.service';
 import { EditPasswordComponent } from './crudUser/edit-password/edit-password.component';
-import { ListHouseComponent } from './list-house/list-house.component' ;
+import { ListHouseComponent } from './list-house/list-house.component';
+import { MainPageHouseListComponent } from './main-page-house-list/main-page-house-list.component' ;
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { ListHouseComponent } from './list-house/list-house.component' ;
     LoginComponent,
     EditPasswordComponent,
     ListHouseComponent,
+    MainPageHouseListComponent,
   ],
   imports: [
     BrowserModule,
