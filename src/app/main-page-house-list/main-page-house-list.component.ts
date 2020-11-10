@@ -14,11 +14,15 @@ export class MainPageHouseListComponent implements OnInit {
 
   currentUser: AppUser={};
   propertyPage: AppProperty[]=[];
+  p: number = 1;
+  propid:number;
+
 
   constructor(private appUserService: AppUserService, private router: Router, private fb: FormBuilder, private injector: Injector) {
     this.appUserService.getData().subscribe(data=>{
       this.currentUser= data;
     });
+    this.p=1;
   }
 
 
@@ -29,10 +33,13 @@ export class MainPageHouseListComponent implements OnInit {
         this.propertyPage=data;
       }
     )
+
+    // this.propertyPage.forEach(element => {
+    //   let rating: number = 0;
+    //   element.appReviews.forEach(review => {
+    //     rating+=review.rating;
+    //   });
+    //   element.rating=rating;
+    // });
   }
-
-  nextPage(){
-
-  }
-
 }
