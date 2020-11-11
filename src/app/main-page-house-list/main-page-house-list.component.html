@@ -1,8 +1,7 @@
 <div class="py-4" style="background-color: white;">
   <table class="col-12">
     <tbody>
-      <tr *ngFor="let prop of propertyPage | paginate: { id:'prop'+propid,itemsPerPage: 6, currentPage:p ,totalItems: propertyPage.length }">
-
+      <tr *ngFor="let prop of (propertyPage | checkAvailability) | paginate: { id:'prop'+propid,itemsPerPage: 6, currentPage:p ,totalItems: (propertyPage | checkAvailability).length }">
        <div class="container emp-profile">
           <div>
             <div class="row">
@@ -22,7 +21,7 @@
                     <h5 [textContent]="prop.name">
                     </h5>
                     <h6>
-                      {{prop.type}}
+                      {{prop.type}} {{prop.status}}
                     </h6>
                     <p class="proile-rating">Rating : <span>{{prop.rating}}/5</span></p>
                     <ul class="nav nav-tabs mt-100" [id]="'myTab'+prop.id" role="tablist">

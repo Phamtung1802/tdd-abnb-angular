@@ -19,6 +19,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ReviewPageComponent } from './review-page/review-page.component';
 import { PlaceBookingModalComponent } from './place-booking-modal/place-booking-modal.component';
 import { AddReviewModalComponent } from './add-review-modal/add-review-modal.component';
+import { CheckAvailabilityPipe } from './check-availability.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { AddReviewModalComponent } from './add-review-modal/add-review-modal.com
     ReviewPageComponent,
     PlaceBookingModalComponent,
     AddReviewModalComponent,
+    CheckAvailabilityPipe,
   ],
   imports: [
     BrowserModule,
