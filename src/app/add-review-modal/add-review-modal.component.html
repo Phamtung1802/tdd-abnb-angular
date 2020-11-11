@@ -1,0 +1,49 @@
+<!-- Modal -->
+<div class="modal fade" [id]="'addreview'+prop.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="reviewForm" style="width: 80%; margin-left: 10%; margin-top:3%;">
+        <div class="form-group">
+          <label>Comment:</label>
+          <textarea class="form-control" formControlName="comment" placeholder="Enter name" height="6em"></textarea>
+          <div *ngIf="comment.invalid && (comment.dirty || comment.touched)"
+              class="alert alert-danger my-1">
+            <div *ngIf="comment.errors.required" class="my-1">
+              User Name Not Empty
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Rating:</label>
+          <select class="form-control" formControlName="rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <br>
+        <br>
+        <div *ngIf="message!=null"class="alert alert-danger my-1">
+          <div [innerHTML]="message">
+          </div>
+        </div>
+        <button type="submit" (click)="createReview()">Submit</button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+  </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->

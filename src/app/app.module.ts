@@ -17,6 +17,8 @@ import { ListHouseComponent } from './list-house/list-house.component';
 import { MainPageHouseListComponent } from './main-page-house-list/main-page-house-list.component' ;
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ReviewPageComponent } from './review-page/review-page.component';
+import { PlaceBookingModalComponent } from './place-booking-modal/place-booking-modal.component';
+import { AddReviewModalComponent } from './add-review-modal/add-review-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,8 @@ import { ReviewPageComponent } from './review-page/review-page.component';
     ListHouseComponent,
     MainPageHouseListComponent,
     ReviewPageComponent,
+    PlaceBookingModalComponent,
+    AddReviewModalComponent,
   ],
   imports: [
     BrowserModule,
