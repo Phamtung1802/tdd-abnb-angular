@@ -1,19 +1,43 @@
+<!-- Modal -->
 <div class="modal fade" [id]="'book'+prop.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Place Booking</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Booking</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <div>
+          Price: {{prop.pricePerDay}}/day
+        </div>
+        <form [formGroup]="bookingForm" style="width: 80%; margin-left: 10%; margin-top:3%;">
+        <div class="form-group">
+          <label>From:</label>
+          <input type="date" class="form-control" formControlName="checkinDate">
+        </div>
+        <div class="form-group">
+          <label>To:</label>
+          <input type="date" class="form-control" formControlName="checkoutDate">
+        </div>
+        <br>
+        <br>
+        <div *ngIf="bookingmessage!=null&&bookingmessage=='Success'"class="alert alert-success my-1">
+          <div [innerHTML]="bookingmessage">
+          </div>
+        </div>
+        <div *ngIf="bookingmessage!=null&&bookingmessage!='Success'"class="alert alert-danger my-1">
+          <div [innerHTML]="bookingmessage">
+          </div>
+        </div>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" (click)="bookingmessage=null" data-dismiss="modal">Close</button>
+        <button type="submit" (click)="createBooking()" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
 </div>
+<!-- Modal -->

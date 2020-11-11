@@ -5,6 +5,7 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import { IloginrequestService } from './iloginrequest.service';
 import { AppProperty } from '../object-interfaces/AppProperty';
 import { AppReview } from '../object-interfaces/AppReview';
+import { AppBooking } from '../object-interfaces/AppBooking';
 
 const API_URL = 'http://localhost:8080';
 @Injectable({
@@ -41,6 +42,11 @@ export class AppUserService {
   createReview(review: AppReview): Observable<AppReview> {
     return this.http.post<AppReview>(API_URL + `/reviews`, review);
   }
+
+  createBooking(booking: AppBooking): Observable<AppBooking> {
+    return this.http.post<AppBooking>(API_URL + `/bookings`, booking);
+  }
+
 
 
   createHouse(property: AppProperty): Observable<AppUser> {

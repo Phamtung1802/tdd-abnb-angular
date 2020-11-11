@@ -40,15 +40,15 @@ export class AddReviewModalComponent implements OnInit {
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = String(today.getFullYear());
-    this.date = mm + '/' + dd + '/' + yyyy;
+    this.date = mm + '-' + dd + '-' + yyyy;
     this.appUserService.getData().subscribe(data=>{
       this.currentUser= data;
     },
     err=> { this.router.navigateByUrl('/login')}
     );
     this.reviewForm = this.fb.group({
-      comment: new FormControl(),
-      rating: new FormControl(),
+      comment: ['',Validators.required],
+      rating: ['',Validators.required],
     });
   }
 
