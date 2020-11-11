@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {EditUserComponent} from './crudUser/edit-user/edit-user.component';
 import {CreateUserComponent} from './crudUser/create-user/create-user.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import {LoginComponent} from './login/login.component';
@@ -20,6 +20,10 @@ import { EditHouseComponent } from './crudHouse/edit-house/edit-house.component'
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import { ModalGalleryComponent } from './modal-gallery/modal-gallery.component';
+import {GalleryModule} from '@ks89/angular-modal-gallery';
+import 'hammerjs';
+import 'mousetrap';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     ListHouseComponent,
     DetailHouseComponent,
     EditHouseComponent,
+    ModalGalleryComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +45,9 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    GalleryModule,
+    FormsModule
   ],
   providers: [
     {

@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {AppProperty} from '../object-interfaces/AppProperty';
 
 
-const API_URL = 'http://localhost:8080/';
+const API_URL = 'http://localhost:8080/property';
 const API_URL2 = 'http://localhost:8080/';
 
 

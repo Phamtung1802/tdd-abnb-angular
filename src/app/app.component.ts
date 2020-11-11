@@ -12,13 +12,13 @@ import { IloginrequestService } from './service/iloginrequest.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+
+  constructor(private appUserService: AppUserService, private iloginRequestService: IloginrequestService){};
   title = 'tdd-abnb-angular';
   loginRequest: Iloginrequest;
   currentUser: AppUser={
     name:""
   };
-
-  constructor(private appUserService: AppUserService, private iloginRequestService: IloginrequestService){};
 
 
   ngOnInit(): void {

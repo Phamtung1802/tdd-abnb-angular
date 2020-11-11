@@ -8,6 +8,7 @@ import {CreateHouseComponent} from './crudHouse/create-house/create-house.compon
 import {EditHouseComponent} from './crudHouse/edit-house/edit-house.component';
 import {DetailHouseComponent} from './crudHouse/detail-house/detail-house.component';
 import {ListHouseComponent} from './crudHouse/list-house/list-house.component';
+import {ModalGalleryComponent} from './modal-gallery/modal-gallery.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'personal',
     component: ListHouseComponent,
+  },
+  {
+    path: 'app-modal-gallery-page',
+    component: ModalGalleryComponent,
   },
 ];
 
