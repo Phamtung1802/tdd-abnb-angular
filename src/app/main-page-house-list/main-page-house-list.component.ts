@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AppProperty } from '../object-interfaces/AppProperty';
 import { AppUser } from '../object-interfaces/AppUser';
 import { AppUserService } from '../service/app-user.service';
+import index from '@angular/cli';
 
 @Component({
   selector: 'app-main-page-house-list',
@@ -12,27 +13,35 @@ import { AppUserService } from '../service/app-user.service';
 })
 export class MainPageHouseListComponent implements OnInit {
 
-  currentUser: AppUser={};
+  currentUser: AppUser = {};
   propertyPage: AppProperty[]=[];
   p: number = 1;
-  propid:number;
+  propid: number;
 
 
   constructor(private appUserService: AppUserService, private router: Router, private fb: FormBuilder, private injector: Injector) {
     this.appUserService.getData().subscribe(data=>{
-      this.currentUser= data;
+      this.currentUser = data;
     });
-    this.p=1;
+    this.p = 1;
   }
 
 
   ngOnInit(): void {
     this.appUserService.getAllProperty().subscribe(
-      //Success
-      data=>{
-        this.propertyPage=data;
+      // Success
+      data => {
+        this.propertyPage = data;
       }
-    )
+    );
+  }
+
+  // tslint:disable-next-line:no-shadowed-variable
+    delete(index): void {
+      if (confirm('Are you sure?')) {
+        this.propertyPage.splice(index,1);
+      }
+    }
 
     // this.propertyPage.forEach(element => {
     //   let rating: number = 0;
@@ -41,5 +50,4 @@ export class MainPageHouseListComponent implements OnInit {
     //   });
     //   element.rating=rating;
     // });
-  }
 }
