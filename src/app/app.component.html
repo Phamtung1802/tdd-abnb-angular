@@ -24,23 +24,27 @@
 
       <a class="nav-link" [routerLink]="''" style="color: #062c33;font-size: 17px">TRẢI NGHIỆM</a>
 
-      <a class="nav-link disabled" [routerLink]="" tabindex="-1" aria-disabled="true"
+      <a class="nav-link disabled" [routerLink]="'/list-house'" tabindex="-1" aria-disabled="true"
          style="color: #062c33;font-size: 17px">TRỞ THÀNH CHỦ NHÀ</a>
 
       <div *ngIf="currentUser.name==''" class="form-inline my-2 my-lg-0 navbar-nav ml-auto">
           <a [routerLink]="'/login'"  class="mx-1">Login</a> | <a [routerLink]="'/register'" class="mx-1">Register</a>
       </div>
       <div *ngIf="currentUser.name!=''" class="form-inline my-2 my-lg-0 navbar-nav ml-auto">
-        <a [routerLink]="'/login'"  class="mx-1">Welcome, {{currentUser.name}}</a> | <a [routerLink]="'/register'" class="mx-1">Edit</a> | <a (click)="logOut()" href="#" class="mx-1">Logout</a>
+        <a [routerLink]="'/login'"  class="mx-1">Welcome, {{currentUser.name}}</a> | <a [routerLink]="['/edit-user']" class="mx-1">Edit</a> | <a [routerLink]="['/edit-password']" class="mx-1">Change Password</a> | <a (click)="logOut()" href="#" class="mx-1">Logout</a>
       </div>
     </ul>
 
   </div>
 </nav>
-
 <!--slideshow dau trang-->
-<router-outlet></router-outlet>
-
-<footer class="footer-area">
-
+<div class="container" style="margin-top: 61px !important;">
+  <div class=row>
+    <div class="col col-120">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<footer class="footer-area fixed-bottom">
+  <button (click)="click()">Click</button>
 </footer>

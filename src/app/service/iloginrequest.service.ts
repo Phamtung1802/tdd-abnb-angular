@@ -24,7 +24,7 @@ export class IloginrequestService {
   public getToken(): string {
     if(JSON.parse(sessionStorage.getItem('rbnbuser'))!=null){
         this.token = JSON.parse(sessionStorage.getItem('rbnbuser'));
-    }
+    } else this.token= {"token":""}
     return this.token.token;
   }
 

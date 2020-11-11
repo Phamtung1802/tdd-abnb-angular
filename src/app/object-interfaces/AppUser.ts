@@ -7,6 +7,8 @@ import { AppRole } from './AppRole';
 export interface AppUser{
   id?: number;
   name?: string;
+  realName?: string;
+  address?: string;
   password?: string;
   avatar?: string;
   email?: string;

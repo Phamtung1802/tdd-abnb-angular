@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {AppUser} from '../../object-interfaces/AppUser';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {Iloginrequest} from '../../object-interfaces/Iloginrequest';
 import {Router} from '@angular/router';
 import {AppUserService} from '../../service/app-user.service';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-user',
@@ -12,40 +13,62 @@ import {AppUserService} from '../../service/app-user.service';
 })
 export class EditUserComponent implements OnInit {
 
-  user: AppUser = null;
+  currentUser: AppUser = {};
   userForm: FormGroup;
   loginRequest: Iloginrequest;
+  success: boolean=false;
+  that = this;
 
 
-  constructor(private iUserService: AppUserService,
+  constructor(private appUserService: AppUserService,
               private fb: FormBuilder,
-              private router: Router, ) { }
+              private router: Router) {
+
+              }
 
   ngOnInit(): void {
-    this.loginRequest = JSON.parse((sessionStorage.getItem('user')));
-    this.getUserById(this.loginRequest.id)
+    console.log("success init "+this.success)
+    console.log("Init Edit Comp");
+    this.appUserService.getData().subscribe(data=>{
+      console.log("Init Edit Comp");
+      this.currentUser= data;
+      console.log(this.currentUser);
+    });
     this.userForm = this.fb.group({
       id: new FormControl(),
       name: new FormControl(),
+      realName: new FormControl(),
+      address: new FormControl(),
       email: new FormControl(),
-      password: new FormControl(),
+      avatar: new FormControl(),
+      phoneNumber: new FormControl()
     });
   }
   getUserById(id: number): void {
-    this.iUserService.getUserById(id).subscribe(pr => {
-      this.user = pr;
+    this.appUserService.getUserById(id).subscribe(pr => {
+      this.currentUser = pr;
       console.log(pr);
-      console.log(this.user);
+      console.log(this.currentUser);
 
     });
 
   }
   update(): void {
     const user = this.userForm.value;
-    this.iUserService.updateUser(this.user.id, user).subscribe(() => {
-      this.loginRequest = JSON.parse((sessionStorage.getItem('user')));
-      sessionStorage.removeItem('user');
-      this.router.navigate(['/login']);
+    this.appUserService.updateUser(this.currentUser.id, user).subscribe(data => {
+      this.success=true;
+      console.log('before time out success '+ this.success);
+      this.appUserService.changeData(data)
+      setTimeout(()=> {
+        console.log("timing");
+        this.success=false;
+        console.log(this.success);
+      }, 3000);
+      console.log('timed out success '+ this.success);
     });
+  }
+  click():void{
+    console.log('edit click');
+    console.log(this.currentUser);
   }
 }

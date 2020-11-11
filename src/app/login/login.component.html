@@ -1,45 +1,44 @@
-<section class="breadcumb-area bg-img bg-overlay">
-  <div class="bradcumbContent">
-<!--    <p>See what’s new</p>-->
-    <h2>Login</h2>
-  </div>
-</section>
-<section class="login-area section-padding-100">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-8">
-        <div class="login-content">
-          <h3>Welcome</h3>
-          <!-- Login Form -->
-          <div class="login-form">
-            <form [formGroup]="loginForm">
-              <div class="form-group">
-                <label for="exampleInputUserName">Username</label>
-                <input type="userName" class="form-control" id="exampleInputUserName" placeholder="Enter User Name" formControlName="username">
-                <!--                <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>-->
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
-              </div>
-              <div *ngIf="message!=null" class="alert alert-danger my-1">
-                <div [innerHTML]="message">
-
+<div style="background-color: white;">
+  <section class="breadcumb-area bg-img bg-overlay" style="height: 200px; background-color: white;">
+    <div class="bradcumbContent" >
+  <!--    <p>See what’s new</p>-->
+      <h2>Login</h2>
+    </div>
+  </section>
+  <section class="login-area section-padding-100" style="background-color: white;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div class="login-content">
+            <h3>Welcome</h3>
+            <!-- Login Form -->
+            <div class="login-form">
+              <form [formGroup]="loginForm">
+                <div class="form-group">
+                  <label for="exampleInputUserName">Username</label>
+                  <input type="userName" class="form-control" id="exampleInputUserName" placeholder="Enter User Name" formControlName="username">
+                  <!--                <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>-->
                 </div>
-              </div>
-              <button type="submit" (click)="findUser()" class="btn oneMusic-btn mt-30">Login
-<!--                <a [href]="'http://localhost:4200'">Login</a>-->
-              </button>
-            </form>
-<<<<<<< Updated upstream
-=======
-            <br>
-            <div class="alert alert-success" [hidden]="!success"> Signup Success, please login </div>
-            <br>
->>>>>>> Stashed changes
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
+                </div>
+                <div *ngIf="message!=null" class="alert alert-danger my-1">
+                  <div [innerHTML]="message">
+
+                  </div>
+                </div>
+                <button type="submit" (click)="findUser()" class="btn oneMusic-btn mt-30">
+                  Login
+                </button>
+              </form>
+              <br>
+              <div class="alert alert-success" [hidden]="!success"> Signup Success, please login </div>
+              <br>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

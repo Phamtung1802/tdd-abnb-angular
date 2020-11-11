@@ -14,12 +14,15 @@ import { Iloginrequest } from '../object-interfaces/Iloginrequest';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(private injector: Injector) {
+
+  constructor(public auth: IloginrequestService, private injector: Injector) {
 
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const requestService=this.injector.get(IloginrequestService);
+    console.log("token o duoi");
+    console.log(`Bearer ${requestService.getToken()}`);
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${requestService.getToken()}`
@@ -28,3 +31,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 }
+
+
+
+

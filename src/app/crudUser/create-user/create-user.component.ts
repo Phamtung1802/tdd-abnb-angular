@@ -25,6 +25,8 @@ export class CreateUserComponent implements OnInit {
       password: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
       avatar: [''],
+      realName:['', [Validators.required]],
+      address:['', [Validators.required]]
     });
   }
   createUser(): void {
@@ -33,7 +35,9 @@ export class CreateUserComponent implements OnInit {
       email: this.userForm.value.email,
       password: this.userForm.value.password,
       phoneNumber: this.userForm.value.phoneNumber,
-      avatar: null,
+      avatar: this.userForm.value.avatar,
+      realName: this.userForm.value.realName,
+      address: this.userForm.value.address,
       appRole:{
         id: 2 as number
       }
@@ -43,6 +47,7 @@ export class CreateUserComponent implements OnInit {
     //thanh cong
     () => {
       this.message=null;
+      this.router.navigateByUrl('/login',{state: {success:true}});
     },
     //that bai
       (error) => {
@@ -69,4 +74,13 @@ export class CreateUserComponent implements OnInit {
   get avatarUser(){
     return this.userForm.get('avatar');
   }
+
+  get realName(){
+    return this.userForm.get('realName');
+  }
+
+  get address(){
+    return this.userForm.get('address');
+  }
+
 }
