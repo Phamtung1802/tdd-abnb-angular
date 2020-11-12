@@ -29,8 +29,8 @@ export class AppComponent implements OnInit{
     this.iLoginReqestService.firstLogin().subscribe(
       //Valid
       data=>{
-          this.appUserService.changeData(data);
           this.appUserService.getData().subscribe(data=> this.currentUser=data);
+          this.appUserService.changeData(data);
           console.log("Main comp current user sau khi subscribe");
           console.log(this.currentUser);
       },
