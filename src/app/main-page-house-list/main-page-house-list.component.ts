@@ -20,6 +20,7 @@ export class MainPageHouseListComponent implements OnInit {
   startDate: string="";
   endDate: string="";
   search: string="";
+  unfiltered: AppProperty[]=[];
 
   constructor(private appUserService: AppUserService, private router: Router, private fb: FormBuilder, private injector: Injector) {
     this.appUserService.getData().subscribe(data=>{
@@ -63,6 +64,10 @@ export class MainPageHouseListComponent implements OnInit {
         }
       }
     }
+    if(this.search==""&&this.startDate==""&&this.endDate==""){
+      console.log("here");
+      this.propertyPage=this.unfiltered.filter(object => object.status=="Available");
+    }
     console.log(this.propertyPage);
   }
   resetList(){
@@ -79,6 +84,7 @@ export class MainPageHouseListComponent implements OnInit {
       //Success
       (data: AppProperty[])=>{
         this.propertyPage=data.filter(object => object.status=="Available");
+        this.unfiltered=data;
       }
     )
   }
