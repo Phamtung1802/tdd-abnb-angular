@@ -1,6 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppBooking } from '../object-interfaces/AppBooking';
 import { AppProperty } from '../object-interfaces/AppProperty';
 import { AppUser } from '../object-interfaces/AppUser';
 import { AppUserService } from '../service/app-user.service';
@@ -16,7 +17,9 @@ export class MainPageHouseListComponent implements OnInit {
   propertyPage: AppProperty[]=[];
   p: number = 1;
   propid:number;
-
+  startDate: string="";
+  endDate: string="";
+  search: string="";
 
   constructor(private appUserService: AppUserService, private router: Router, private fb: FormBuilder, private injector: Injector) {
     this.appUserService.getData().subscribe(data=>{
@@ -25,21 +28,58 @@ export class MainPageHouseListComponent implements OnInit {
     this.p=1;
   }
 
+  updateList(){
+    console.log(this.startDate)
+    console.log(this.endDate)
+    let dateStart=Date.parse(this.startDate)
+    let dateEnd=Date.parse(this.endDate)
+    let checkSearchingDate= (dateStart-dateEnd)<0;
+    console.log(dateStart);
+    console.log(dateEnd);
 
-  ngOnInit(): void {
+    if(this.search!=null){
+      for(let i = 0; i < this.propertyPage.length; i++){
+        if(this.propertyPage[i].address.includes(this.search)===false){
+          this.propertyPage.splice(i,1);
+          i--;
+        }
+      }
+    }
+    if((this.startDate!="")&&(this.endDate!="")&&checkSearchingDate){
+      for(let i = 0; i < this.propertyPage.length; i++){
+        for(let j = 0; j < this.propertyPage[i].appBookings.length; j++){
+          console.log(j);
+          let bookingdateStart=Date.parse(this.propertyPage[i].appBookings[i].checkinDate);
+          let bookingdateEnd=Date.parse(this.propertyPage[i].appBookings[i].checkoutDate);
+          let startdiff=bookingdateStart-dateEnd;
+          let enddiff=bookingdateEnd-dateStart;
+          console.log(startdiff);
+          console.log(enddiff);
+          if(!(startdiff>=0||enddiff<=0)){
+            this.propertyPage.splice(i,1);
+            i--;
+            break;
+          }
+        }
+      }
+    }
+    console.log(this.propertyPage);
+  }
+  resetList(){
     this.appUserService.getAllProperty().subscribe(
       //Success
-      data=>{
-        this.propertyPage=data;
+      (data: AppProperty[])=>{
+        this.propertyPage=data.filter(object => object.status=="Available");
       }
     )
+  }
 
-    // this.propertyPage.forEach(element => {
-    //   let rating: number = 0;
-    //   element.appReviews.forEach(review => {
-    //     rating+=review.rating;
-    //   });
-    //   element.rating=rating;
-    // });
+  ngOnInit(): void {
+      this.appUserService.getAllProperty().subscribe(
+      //Success
+      (data: AppProperty[])=>{
+        this.propertyPage=data.filter(object => object.status=="Available");
+      }
+    )
   }
 }

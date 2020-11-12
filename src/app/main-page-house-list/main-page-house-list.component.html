@@ -1,7 +1,18 @@
 <div class="py-4" style="background-color: white;">
+  <div class="container mx-2">
+    <div class="row">
+      <input type="text" class="form-control col-2 mx-1" (change)="search=$event.target.value">
+      <input type="date" class="form-control col-2 mx-1" (change)="startDate=$event.target.value">
+      <input type="date" class="form-control col-2 mx-1" (change)="endDate=$event.target.value">
+      <button class="btn btn-secondary mx-1" (click)="updateList()">Seacrch</button>
+      <button class="btn btn-secondary" (click)="resetList()">Reset</button>
+    </div>
+  </div>
+  <br>
   <table class="col-12">
     <tbody>
-      <tr *ngFor="let prop of (propertyPage | checkAvailability) | paginate: { id:'prop'+propid,itemsPerPage: 6, currentPage:p ,totalItems: (propertyPage | checkAvailability).length }">
+      <div *ngIf="propertyPage.length==0" class="alert alert-danger">FOUND NOTHING</div>
+      <tr *ngFor="let prop of propertyPage | paginate: { id:'prop'+propid,itemsPerPage: 6, currentPage:p ,totalItems: propertyPage.length }">
        <div class="container emp-profile">
           <div>
             <div class="row">
@@ -23,7 +34,7 @@
                     <h6>
                       {{prop.type}} {{prop.status}}
                     </h6>
-                    <p class="proile-rating">Rating : <span>{{prop.rating}}/5</span></p>
+                    <p class="proile-rating">Price : <span>{{prop.pricePerDay}}</span></p>
                     <ul class="nav nav-tabs mt-100" [id]="'myTab'+prop.id" role="tablist">
                       <li class="nav-item">
                         <a class="nav-link active" [id]="'des'+prop.id+'-tab'" data-toggle="tab" [href]="'#des'+prop.id" role="tab" aria-controls="home" aria-selected="true">About</a>

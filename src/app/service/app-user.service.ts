@@ -58,6 +58,11 @@ export class AppUserService {
     return this.http.post<AppBooking>(API_URL + `/bookings`, booking);
   }
 
+  deleteBooking(id: number): Observable<AppBooking> {
+    return this.http.delete<AppBooking>(API_URL + `/bookings/${id}`);
+  }
+
+
   updatePropertyStatus(property: AppProperty): Observable<AppBooking> {
     return this.http.patch<AppBooking>(API_URL + `/property`, property);
   }
@@ -83,5 +88,8 @@ export class AppUserService {
   }
   getAllProperty(): Observable<AppUser[]> {
     return this.http.get<AppUser[]>( API_URL + `/property`);
+  }
+  getAllPropertyByAddressAndDate(property: AppProperty): Observable<AppUser[]> {
+    return this.http.post<AppUser[]>( API_URL + `/property/find-by-address`,property);
   }
 }

@@ -22,6 +22,7 @@ import { AddReviewModalComponent } from './add-review-modal/add-review-modal.com
 import { CheckAvailabilityPipe } from './check-availability.pipe';
 import { RenterHouseListComponent } from './renter-house-list/renter-house-list.component';
 import { MyPlaceComponent } from './my-place/my-place.component';
+import { MyBookingComponent } from './my-booking/my-booking.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { MyPlaceComponent } from './my-place/my-place.component';
     CheckAvailabilityPipe,
     RenterHouseListComponent,
     MyPlaceComponent,
+    MyBookingComponent,
   ],
   imports: [
     BrowserModule,
