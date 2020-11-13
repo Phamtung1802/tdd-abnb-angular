@@ -60,8 +60,4 @@ export class EditPasswordComponent implements OnInit {
       }, 3000);
     }
   }
-
-
-
-
 }
