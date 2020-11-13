@@ -28,7 +28,18 @@ export class AppUserService {
     return this.currentUser$;
   }
 
+  compareId(a: number, b:number) {
+    if (a > b) {
+      return 1;
+    }
+    if (a < b) {
+       return -1;
+    }
+    return 0;
+  }
+
   changeData(data: AppUser) {
+    data.appProperties.sort((a,b)=>this.compareId(a.id,b.id))
      this.currentUser.next(data);
      this.getData()
      console.log("Checking currentuser in service");
@@ -46,6 +57,15 @@ export class AppUserService {
 
   createBooking(booking: AppBooking): Observable<AppBooking> {
     return this.http.post<AppBooking>(API_URL + `/bookings`, booking);
+  }
+
+  deleteBooking(id: number): Observable<AppBooking> {
+    return this.http.delete<AppBooking>(API_URL + `/bookings/${id}`);
+  }
+
+
+  updatePropertyStatus(property: AppProperty): Observable<AppBooking> {
+    return this.http.patch<AppBooking>(API_URL + `/property`, property);
   }
 
 
@@ -69,5 +89,8 @@ export class AppUserService {
   }
   getAllProperty(): Observable<AppUser[]> {
     return this.http.get<AppUser[]>( API_URL + `/property`);
+  }
+  getAllPropertyByAddressAndDate(property: AppProperty): Observable<AppUser[]> {
+    return this.http.post<AppUser[]>( API_URL + `/property/find-by-address`,property);
   }
 }

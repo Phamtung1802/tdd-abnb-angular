@@ -18,7 +18,7 @@ export interface AppProperty{
   pricePerDay?: number;
   appUser?: AppUser;
   appInvoiceSet?: Set<AppInvoice>;
-  appBookingSet?: Set<AppBooking>;
+  appBookings?: AppBooking[];
   appReviews?: AppReview[];
   appImages?: AppImage[];
   rating?:number;

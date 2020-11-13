@@ -32,8 +32,9 @@ export class AddReviewModalComponent implements OnInit {
   constructor(private appUserService: AppUserService,
     private fb: FormBuilder,
     private router: Router) {
+  }
 
-    }
+
 
   ngOnInit(): void {
     let today = new Date();
@@ -68,7 +69,7 @@ export class AddReviewModalComponent implements OnInit {
     console.log(this.appReview);
     this.appUserService.createReview(this.appReview).subscribe(
       success =>{
-
+        this.prop.appReviews.push(success);
       },
       err=> {
         console.log(err);

@@ -1,0 +1,23 @@
+<div class="py-4 container row" style="background-color: white;">
+  <table class="table col-12">
+    <tbody class="container">
+      <tr class="row">
+        <th class="col-1">ID</th>
+        <th class="col-5">Name</th>
+        <th class="col-4">Address</th>
+        <th class="col-1">Actions</th>
+      </tr>
+      <tr *ngFor="let prop of currentUser.appProperties; let i = index" class="row">
+        <td class="col-1">{{prop.id}}</td>
+        <td class="col-5">{{prop.name}}</td>
+        <td class="col-4">{{prop.address}}</td>
+        <td class="col-1">
+          <select (change)="updatePropertyStatus(prop, $event.target.value)" [value]="prop.status">
+            <option>Available</option>
+            <option>Not Available</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

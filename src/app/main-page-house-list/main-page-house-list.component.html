@@ -1,24 +1,101 @@
 <div class="py-4" style="background-color: white;">
+  <div class="container mx-2">
+    <div class="row">
+      <input type="text" class="form-control col-2 mx-1" (change)="search=$event.target.value">
+      <input type="date" class="form-control col-2 mx-1" (change)="startDate=$event.target.value">
+      <input type="date" class="form-control col-2 mx-1" (change)="endDate=$event.target.value">
+      <button class="btn btn-secondary mx-1" (click)="updateList()">Seacrch</button>
+      <button class="btn btn-secondary" (click)="resetList()">Reset</button>
+    </div>
+  </div>
+  <br>
   <table class="col-12">
     <tbody>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Image</th>
-      <th></th>
-      <th>Actions</th>
-    </tr>
-      <tr *ngFor="let prop of propertyPage; let i = index">
-        <td>{{i + 1}}</td>
-        <td>{{prop.id}}</td>
-        <td>{{prop.name}}</td>
-        <td>{{prop.address}}</td>
-        <td>{{prop.appImages}}</td>
-        <td>
-          <button class="btn btn-primary" (click)="delete(prop.id)">Delete</button>
-        </td>
+      <div *ngIf="propertyPage.length==0" class="alert alert-danger">FOUND NOTHING</div>
+      <tr *ngFor="let prop of propertyPage | paginate: { id:'prop'+propid,itemsPerPage: 6, currentPage:p ,totalItems: propertyPage.length }">
+       <div class="container emp-profile">
+          <div>
+            <div class="row">
+              <div class="col-4">
+                <div class="profile-img">
+                  <img *ngIf="prop.appImages[0]!=null" [src]="prop.appImages[0].url" alt="Hello"/>
+                  <img *ngIf="prop.appImages[0]==null" src="#" alt="Hello"/>
+                </div>
+              </div>
+              <div class="col-8">
+                <div class="profile-head row">
+                  <!-- Modal -->
+                  <app-place-booking-modal [prop]="prop"></app-place-booking-modal>
+                  <app-add-review-modal [prop]="prop"></app-add-review-modal>
+                  <!-- Modal -->
+                  <div class="col col-10 mr-auto">
+                    <h5 [textContent]="prop.name">
+                    </h5>
+                    <h6>
+                      {{prop.type}} {{prop.status}}
+                    </h6>
+                    <p class="proile-rating">Price : <span>{{prop.pricePerDay}}/Day</span></p>
+                    <ul class="nav nav-tabs mt-100" [id]="'myTab'+prop.id" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" [id]="'des'+prop.id+'-tab'" data-toggle="tab" [href]="'#des'+prop.id" role="tab" aria-controls="home" aria-selected="true">About</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" [id]="'rev'+prop.id+'-tab'" data-toggle="tab" [href]="'#rev'+prop.id" role="tab" aria-controls="rev" aria-selected="false">Reviews</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col col-2 ml-auto px-0">
+                    <button type="button" class="btn btn-success my-1" data-toggle="modal" [attr.data-target]="'#book'+prop.id">
+                      Place Booking
+                    </button>
+                    <button type="button" class="btn btn-dark my-1" data-toggle="modal" [attr.data-target]="'#addreview'+prop.id">
+                      Write Review&nbsp;&nbsp;
+                    </button>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-2">
+              <div class="col-md-4">
+                <div class="profile-work">
+                  <p>Bedroom Number<br>
+                    {{prop.bedroomNum}}
+                  </p>
+                  <p>Bathroom Number<br>
+                    {{prop.bathroomNum}}
+                  </p>
+                  <p>Address<br>
+                    {{prop.address}}
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="tab-content profile-tab h-100" id="myTabContent">
+                  <div class="tab-pane fade show active" [id]="'des'+prop.id" role="tabpanel" aria-labelledby="des-tab">
+                    <div class="row">
+                      <div class="col-12">
+                        <label>Description</label>
+                      </div>
+                      <div class="col-12">
+                        <p>{{prop.description}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade show h-100" [id]="'rev'+prop.id" role="tabpanel" aria-labelledby="des-tab">
+                    <div class="row">
+                      <ul class="col col-12">
+                        <app-review-page [reviews]="prop.appReviews" [propid]="prop.id"></app-review-page>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
       </tr>
     </tbody>
+    <pagination-controls (pageChange)="p=$event" [id]="'prop'+propid"></pagination-controls>
   </table>
 </div>

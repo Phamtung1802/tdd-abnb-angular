@@ -20,9 +20,9 @@
       <a class="nav-link" [routerLink]="''" style="color:#062c33;font-size: 17px">HOME <span
         class="sr-only">(current)</span></a>
 
-      <a class="nav-link" [routerLink]="''" style="color: #062c33;font-size: 17px">NƠI Ở</a>
+      <a class="nav-link" [routerLink]="'/my-booking'" style="color: #062c33;font-size: 17px">MY BOOKING</a>
 
-      <a class="nav-link" [routerLink]="''" style="color: #062c33;font-size: 17px">TRẢI NGHIỆM</a>
+      <a class="nav-link" [routerLink]="'/my-house'" style="color: #062c33;font-size: 17px">MY PLACES</a>
 
       <a class="nav-link disabled" [routerLink]="'/list-house'" tabindex="-1" aria-disabled="true"
          style="color: #062c33;font-size: 17px">TRỞ THÀNH CHỦ NHÀ</a>
@@ -40,7 +40,7 @@
 <!--slideshow dau trang-->
 <div class="container" style="margin-top: 61px !important;">
   <div class=row>
-    <div class="col col-120">
+    <div class="col col-12">
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -7,6 +7,8 @@ import {HomeComponent} from './home/home.component';
 import { EditPasswordComponent } from './crudUser/edit-password/edit-password.component';
 import { ListHouseComponent } from './list-house/list-house.component';
 import { MainPageHouseListComponent } from './main-page-house-list/main-page-house-list.component';
+import { MyPlaceComponent } from './my-place/my-place.component';
+import { MyBookingComponent } from './my-booking/my-booking.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path: 'list-house',
     component: ListHouseComponent
+  },
+  {
+    path: 'my-house',
+    component: MyPlaceComponent
+  },
+  {
+    path: 'my-booking',
+    component: MyBookingComponent
   }
 ];
 
