@@ -7,7 +7,6 @@
   </section>
   <form [formGroup]="userForm" style="width: 80%; margin-left: 10%; margin-top:3%;">
     <div class="form-group">
-      <i class="fas fa-user prefix"></i>
       <label>User Name:</label>
       <input type="text" class="form-control" formControlName="name" placeholder="Enter name *" >
       <div *ngIf="nameUser.invalid && (nameUser.dirty || nameUser.touched)"
