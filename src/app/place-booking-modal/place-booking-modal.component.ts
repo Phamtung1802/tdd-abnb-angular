@@ -67,6 +67,8 @@ export class PlaceBookingModalComponent implements OnInit {
     }
     this.appUserService.createBooking(this.appBooking).subscribe(
       success=>{
+        this.currentUser.appBookings.push(success);
+        this.appUserService.changeData(this.currentUser);
         this.bookingmessage = "Success"
       },
       error=>{

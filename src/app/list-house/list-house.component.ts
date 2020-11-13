@@ -78,9 +78,8 @@ export class ListHouseComponent implements OnInit,OnDestroy {
     },
     //that bai
       (error) => {
-        if(error.error.exception=="com.TDD.ABnB.exceptions.DuplilcateUserException"){
-          this.message= error.error.message;
-        }
+        this.success=true;
+        this.message= error.error.message;
       }
     );
     this.imageArray=[];
