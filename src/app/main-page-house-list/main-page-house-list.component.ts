@@ -85,6 +85,11 @@ export class MainPageHouseListComponent implements OnInit {
       (data: AppProperty[])=>{
         this.propertyPage=data.filter(object => object.status=="Available");
         this.unfiltered=data;
+        this.propertyPage.forEach(element => {
+          element.appReviews.sort((a,b)=>{
+            return b.id-a.id
+          })
+        });
       }
     )
   }

@@ -16,7 +16,7 @@
           <div *ngIf="comment.invalid && (comment.dirty || comment.touched)"
               class="alert alert-danger my-1">
             <div *ngIf="comment.errors.required" class="my-1">
-              User Name Not Empty
+              Comment Not Empty
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@
         </div>
         <br>
         <br>
-        <div *ngIf="message!=null"class="alert alert-danger my-1">
+        <div *ngIf="message!=null"class="alert alert-success my-1">
           <div [innerHTML]="message">
           </div>
         </div>

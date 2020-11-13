@@ -19,13 +19,11 @@
 
       <a class="nav-link" [routerLink]="''" style="color:#062c33;font-size: 17px">HOME <span
         class="sr-only">(current)</span></a>
+      <a class="nav-link" *ngIf="currentUser.name!=''" [routerLink]="'/my-booking'" style="color: #062c33;font-size: 17px">MY BOOKING</a>
+      <a class="nav-link" *ngIf="currentUser.name!=''" [routerLink]="'/my-house'" style="color: #062c33;font-size: 17px">MY PLACES</a>
 
-      <a class="nav-link" [routerLink]="'/my-booking'" style="color: #062c33;font-size: 17px">MY BOOKING</a>
-
-      <a class="nav-link" [routerLink]="'/my-house'" style="color: #062c33;font-size: 17px">MY PLACES</a>
-
-      <a class="nav-link disabled" [routerLink]="'/list-house'" tabindex="-1" aria-disabled="true"
-         style="color: #062c33;font-size: 17px">TRỞ THÀNH CHỦ NHÀ</a>
+      <a *ngIf="currentUser.name!=''" class="nav-link disabled" [routerLink]="'/list-house'" tabindex="-1" aria-disabled="true"
+         style="color: #062c33;font-size: 17px">HOUSE FOR RENT</a>
 
       <div *ngIf="currentUser.name==''" class="form-inline my-2 my-lg-0 navbar-nav ml-auto">
           <a [routerLink]="'/login'"  class="mx-1">Login</a> | <a [routerLink]="'/register'" class="mx-1">Register</a>

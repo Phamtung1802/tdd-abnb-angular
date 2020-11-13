@@ -55,6 +55,9 @@ export class AddReviewModalComponent implements OnInit {
 
   createReview(){
     console.log("hello");
+    if(this.currentUser==null){
+      document.location.href  = 'http://localhost:4200/login';
+    }
     this.appReview ={
       comment: this.reviewForm.value.comment,
       rating: this.reviewForm.value.rating,
@@ -70,6 +73,11 @@ export class AddReviewModalComponent implements OnInit {
     this.appUserService.createReview(this.appReview).subscribe(
       success =>{
         this.prop.appReviews.push(success);
+        this.prop.appReviews.sort((a,b)=>{
+          return b.id-a.id
+        })
+
+        this.message="Success";
       },
       err=> {
         console.log(err);
