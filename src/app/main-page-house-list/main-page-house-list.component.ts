@@ -65,16 +65,20 @@ export class MainPageHouseListComponent implements OnInit {
       }
     }
     if(this.search==""&&this.startDate==""&&this.endDate==""){
-      console.log("here");
-      this.propertyPage=this.unfiltered.filter(object => object.status=="Available");
+      this.propertyPage=this.unfiltered.filter(object => object.status=="Available").sort(
+        (a,b)=>{
+        return b.id-a.id;
+      });
     }
-    console.log(this.propertyPage);
   }
   resetList(){
     this.appUserService.getAllProperty().subscribe(
       //Success
       (data: AppProperty[])=>{
-        this.propertyPage=data.filter(object => object.status=="Available");
+        this.propertyPage=data.filter(object => object.status=="Available").sort(
+          (a,b)=>{
+          return b.id-a.id;
+        });
       }
     )
   }
@@ -85,6 +89,9 @@ export class MainPageHouseListComponent implements OnInit {
       (data: AppProperty[])=>{
         this.propertyPage=data.filter(object => object.status=="Available");
         this.unfiltered=data;
+        this.propertyPage.sort((a,b)=>{
+          return b.id-a.id;
+        })
         this.propertyPage.forEach(element => {
           element.appReviews.sort((a,b)=>{
             return b.id-a.id

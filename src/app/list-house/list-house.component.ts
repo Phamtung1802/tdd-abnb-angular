@@ -13,22 +13,22 @@ import { AppImage } from '../object-interfaces/AppImage';
   templateUrl: './list-house.component.html',
   styleUrls: ['./list-house.component.css']
 })
-export class ListHouseComponent implements OnInit, OnDestroy {
-  house: AppProperty = {};
-  currentUser: AppUser = {};
+export class ListHouseComponent implements OnInit,OnDestroy {
+  house: AppProperty={};
+  currentUser: AppUser={};
   userForm: FormGroup;
   message: string;
-  success = false;
-  imageArray: AppImage[] = [];
+  success: boolean = false;
+  imageArray: AppImage[]=[];
 
 
   constructor(private appUserService: AppUserService, private router: Router, private fb: FormBuilder, private injector: Injector) {
-    this.appUserService.getData().subscribe(data => {
-      this.currentUser = data;
+    this.appUserService.getData().subscribe(data=>{
+      this.currentUser= data;
     });
   }
   ngOnDestroy(): void {
-    this.message = null;
+    this.message=null;
   }
 
   ngOnInit(): void {
@@ -39,20 +39,20 @@ export class ListHouseComponent implements OnInit, OnDestroy {
       address: ['', [Validators.required]],
       bedroomNum: ['', [Validators.required]],
       bathroomNum: [''],
-      description: ['', [Validators.required]],
-      pricePerDay: ['', [Validators.required]],
+      description:['', [Validators.required]],
+      pricePerDay:['', [Validators.required]],
       appImages: ['']
     });
   }
 
-  // tslint:disable-next-line:typedef
   createHouse(){
-    const image: AppImage = {
+    let image: AppImage = {
       url: this.userForm.value.appImages
-    };
-    this.imageArray.push(image);
+    }
+    this.imageArray.push(image
+);
 
-    const property: AppProperty = {
+    let property: AppProperty={
       name: this.userForm.value.name,
       status: this.userForm.value.status,
       type: this.userForm.value.type,
@@ -62,62 +62,52 @@ export class ListHouseComponent implements OnInit, OnDestroy {
       pricePerDay: this.userForm.value.pricePerDay,
       appImages: this.imageArray,
       address: this.userForm.value.address,
-      appUser: {
+      appUser:{
         id: this.currentUser.id
       }
     };
-    console.log('Property');
+    console.log("Property");
     console.log(property);
 
     this.appUserService.createHouse(property).subscribe(
-    // thanh cong
+    //thanh cong
     data => {
-      this.message = 'Success!!!';
+      this.message="Success!!!";
       this.appUserService.changeData(data);
       // this.router.navigateByUrl('/login',{state: {success:true}});
     },
-    // that bai
+    //that bai
       (error) => {
-        // tslint:disable-next-line:triple-equals
-        if (error.error.exception == 'com.TDD.ABnB.exceptions.DuplilcateUserException'){
-          this.message = error.error.message;
-        }
+        this.success=true;
+        this.message= error.error.message;
       }
     );
-    this.imageArray = [];
+    this.imageArray=[];
   }
 
-  // tslint:disable-next-line:typedef
   get name() {
     return this.userForm.get('name');
   }
-  // tslint:disable-next-line:typedef
   get status() {
     return this.userForm.get('status');
   }
-  // tslint:disable-next-line:typedef
   get type() {
     return this.userForm.get('type');
   }
-  // tslint:disable-next-line:typedef
   get bedroomNum(){
     return this.userForm.get('bedroomNum');
   }
-  // tslint:disable-next-line:typedef
   get bathroomNum(){
     return this.userForm.get('bathroomNum');
   }
 
-  // tslint:disable-next-line:typedef
   get description(){
     return this.userForm.get('description');
   }
 
-  // tslint:disable-next-line:typedef
   get pricePerDay(){
     return this.userForm.get('pricePerDay');
   }
-  // tslint:disable-next-line:typedef
   get address(){
     return this.userForm.get('address');
   }
