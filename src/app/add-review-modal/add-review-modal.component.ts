@@ -55,6 +55,9 @@ export class AddReviewModalComponent implements OnInit {
 
   createReview(){
     console.log("hello");
+    if(this.currentUser==null){
+      document.location.href  = 'http://localhost:4200/login';
+    }
     this.appReview ={
       comment: this.reviewForm.value.comment,
       rating: this.reviewForm.value.rating,

@@ -16,10 +16,12 @@ export class AppComponent implements OnInit{
   title = 'tdd-abnb-angular';
   loginRequest: Iloginrequest;
   currentUser: AppUser = {
-    name:""
+    name:''
   };
 
   constructor(private appUserService: AppUserService, private iLoginReqestService: IloginrequestService){
+    console.log("User");
+    console.log(this.currentUser);
   };
 
 
@@ -41,11 +43,13 @@ export class AppComponent implements OnInit{
         }
       });
     }
+    console.log("User");
+    console.log(this.currentUser);
+
   }
   onChanges() {
-
-    this.loginRequest = JSON.parse((sessionStorage.getItem('rbnbuser')));
-    console.log(this.loginRequest==null);
+    console.log("User");
+    console.log(this.currentUser==null);
   }
 
   logOut(): void {
