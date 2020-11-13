@@ -70,6 +70,11 @@ export class AddReviewModalComponent implements OnInit {
     this.appUserService.createReview(this.appReview).subscribe(
       success =>{
         this.prop.appReviews.push(success);
+        this.prop.appReviews.sort((a,b)=>{
+          return b.id-a.id
+        })
+
+        this.message="Success";
       },
       err=> {
         console.log(err);
