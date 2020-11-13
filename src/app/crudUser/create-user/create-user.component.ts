@@ -11,7 +11,7 @@ import { AppUser } from 'src/app/object-interfaces/AppUser';
 })
 export class CreateUserComponent implements OnInit {
 
-  message: String= null;
+  message: String = null;
 
   userForm: FormGroup;
   constructor(private fb: FormBuilder,
@@ -25,8 +25,8 @@ export class CreateUserComponent implements OnInit {
       password: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
       avatar: [''],
-      realName:['', [Validators.required]],
-      address:['', [Validators.required]]
+      realName: ['', [Validators.required, Validators.name]],
+      address: ['', [Validators.required]]
     });
   }
   createUser(): void {
