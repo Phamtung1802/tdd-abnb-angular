@@ -104,8 +104,7 @@ export class ListHouseComponent implements OnInit,OnDestroy {
     let image: AppImage = {
       url: this.userForm.value.appImages
     }
-    this.imageArray.push({url:this.imgLink}
-    );
+    this.imageArray.push({url:this.imgLink});
 
     let property: AppProperty={
       name: this.userForm.value.name,
