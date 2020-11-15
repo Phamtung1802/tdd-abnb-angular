@@ -13,13 +13,16 @@
       <div class="col-md-6 p-0">
         <div class="file-field">
           <div class="z-depth-1-half">
-            <img [src]="'https://mdbootstrap.com/img/Photos/Others/placeholder.jpg'" class="img-fluid"
+            <img [src]="imgLink" class="img-fluid"
               alt="example placeholder">
           </div>
           <div class="">
-            <div class="btn btn-mdb-color btn-rounded float-left">
+            <div class="btn btn-mdb-color btn-rounded float-left p-0 my-1">
               <span>Choose file</span>
-              <input type="file">
+              <input type="file" (change)="checkCoverArtFile($event)" accept=".png,.jpg"><br>
+              <div class="result" *ngIf="downloadURL | async; let uploadSrc">
+                <a [href]="uploadSrc">You just uploaded this file!</a>
+            </div>
             </div>
           </div>
         </div>
