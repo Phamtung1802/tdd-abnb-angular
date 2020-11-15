@@ -47,6 +47,7 @@ export class MainPageHouseListComponent implements OnInit {
       }
     }
     if((this.startDate!="")&&(this.endDate!="")&&checkSearchingDate){
+      console.log("checking date")
       for(let i = 0; i < this.propertyPage.length; i++){
         for(let j = 0; j < this.propertyPage[i].appBookings.length; j++){
           console.log(j);
@@ -57,6 +58,7 @@ export class MainPageHouseListComponent implements OnInit {
           console.log(startdiff);
           console.log(enddiff);
           if(!(startdiff>=0||enddiff<=0)){
+            console.log("slice");
             this.propertyPage.splice(i,1);
             i--;
             break;
