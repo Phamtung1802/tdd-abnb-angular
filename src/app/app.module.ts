@@ -24,6 +24,11 @@ import { RenterHouseListComponent } from './renter-house-list/renter-house-list.
 import { MyPlaceComponent } from './my-place/my-place.component';
 import { MyBookingComponent } from './my-booking/my-booking.component';
 import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,20 +47,25 @@ import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
     MyPlaceComponent,
     MyBookingComponent,
     ImageGalleryComponent,
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

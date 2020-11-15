@@ -10,6 +10,25 @@
 
   <form [formGroup]="userForm" style="width: 80%; margin-left: 10%; margin-top:3%">
     <div class="form-group">
+      <div class="col-md-6 p-0">
+        <div class="file-field">
+          <div class="z-depth-1-half">
+            <img [src]="'https://mdbootstrap.com/img/Photos/Others/placeholder.jpg'" class="img-fluid"
+              alt="example placeholder">
+          </div>
+          <div class="">
+            <div class="btn btn-mdb-color btn-rounded float-left">
+              <span>Choose file</span>
+              <input type="file">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+
+
+    <div class="form-group">
       <label>House Name<sup style="color: red;">*</sup>:</label>
       <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
       <div *ngIf="name.invalid && (name.dirty || name.touched)"

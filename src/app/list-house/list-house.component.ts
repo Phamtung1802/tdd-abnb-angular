@@ -20,6 +20,7 @@ export class ListHouseComponent implements OnInit,OnDestroy {
   message: string;
   success: boolean = false;
   imageArray: AppImage[]=[];
+  imgLink: 'https://mdbootstrap.com/img/Photos/Others/placeholder.jpg';
 
 
   constructor(private appUserService: AppUserService, private router: Router, private fb: FormBuilder, private injector: Injector) {
