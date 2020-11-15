@@ -29,6 +29,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AppBookingListModalComponent } from './app-booking-list-modal/app-booking-list-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     MyPlaceComponent,
     MyBookingComponent,
     ImageGalleryComponent,
+    AppBookingListModalComponent,
 
   ],
   imports: [
