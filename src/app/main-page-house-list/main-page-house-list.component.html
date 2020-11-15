@@ -1,5 +1,5 @@
-<div class="py-4" style="background-color: white;">
-  <div class="container mx-2">
+<div class="py-4 rounded" style="background-color: white;">
+  <div class="container mx-2 rounded">
     <div class="row">
       <input type="text" class="form-control col-2 mx-1" (change)="search=$event.target.value">
       <input type="date" class="form-control col-2 mx-1" (change)="startDate=$event.target.value">
@@ -8,6 +8,7 @@
       <button class="btn btn-secondary" (click)="resetList()">Reset</button>
     </div>
   </div>
+  <hr>
   <br>
   <table class="col-12">
     <tbody>

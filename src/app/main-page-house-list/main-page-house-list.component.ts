@@ -51,14 +51,15 @@ export class MainPageHouseListComponent implements OnInit {
       for(let i = 0; i < this.propertyPage.length; i++){
         for(let j = 0; j < this.propertyPage[i].appBookings.length; j++){
           console.log(j);
-          let bookingdateStart=Date.parse(this.propertyPage[i].appBookings[i].checkinDate);
-          let bookingdateEnd=Date.parse(this.propertyPage[i].appBookings[i].checkoutDate);
+          let bookingdateStart=Date.parse(this.propertyPage[i].appBookings[j].checkinDate);
+          let bookingdateEnd=Date.parse(this.propertyPage[i].appBookings[j].checkoutDate);
           let startdiff=bookingdateStart-dateEnd;
           let enddiff=bookingdateEnd-dateStart;
           console.log(startdiff);
           console.log(enddiff);
           if(!(startdiff>=0||enddiff<=0)){
             console.log("slice");
+            console.log(this.propertyPage[i].id)
             this.propertyPage.splice(i,1);
             i--;
             break;
