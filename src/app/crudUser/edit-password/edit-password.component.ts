@@ -37,27 +37,21 @@ export class EditPasswordComponent implements OnInit {
 
   update(): void {
     const user = {
-     password: this.userForm.value.newPassword
+     password: this.userForm.value.newPassword,
+     name: this.userForm.value.oldPassword
     };
     console.log(this.userForm.value.newPassword);
     console.log(this.userForm.value.confirmNewPassword);
 
     if(this.userForm.value.newPassword===this.userForm.value.confirmNewPassword&&this.userForm.value.newPassword!=null&&this.userForm.value.confirmNewPassword!=null){
-      this.appUserService.updateUserPassword(this.currentUser.id, user).subscribe(() => {
+      this.appUserService.updateUserPassword(this.currentUser.id, user).subscribe(data => {
         this.success=true;
-        console.log('before time out success '+ this.success);
-        setTimeout(()=> {
-          console.log("timing");
-          this.success=false;
-          console.log(this.success);
-        }, 3000);
-        console.log('timed out success '+ this.success);
-      });
-    } else{
-      this.failure=true;
-      setTimeout(()=> {
-        this.failure=false;
-      }, 3000);
+        this.appUserService.changeData(data);
+      },
+      err=>{
+        this.failure=true;
+        this.success=false;
+      })
     }
   }
 }

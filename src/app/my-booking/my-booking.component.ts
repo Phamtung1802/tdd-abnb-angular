@@ -41,7 +41,7 @@ export class MyBookingComponent implements OnInit {
     this.appUserService.deleteBooking(book.id).subscribe(
       (data: AppUser)=> {
         console.log("status success");
-        data.appBookings.sort((a,b)=>this.appUserService.compareId(a.id,b.id));
+        data.appBookings.sort((a,b)=>{return a.id-b.id});
         this.appUserService.changeData(data);
       },
       error=> {
