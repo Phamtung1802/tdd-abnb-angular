@@ -13,10 +13,10 @@ import { AppUserService } from '../service/app-user.service';
 })
 export class MyBookingComponent implements OnInit {
 
-    currentUser: AppUser={};
-    p: number = 1;
-    propid:number;
-    message: string=null;
+  currentUser: AppUser={};
+  p: number = 1;
+  propid:number;
+  message: string=null;
 
 
   constructor(private appUserService: AppUserService, private router: Router, private fb: FormBuilder, private injector: Injector) {
@@ -41,7 +41,7 @@ export class MyBookingComponent implements OnInit {
     this.appUserService.deleteBooking(book.id).subscribe(
       (data: AppUser)=> {
         console.log("status success");
-        data.appBookings.sort((a,b)=>this.appUserService.compareId(a.id,b.id));
+        data.appBookings.sort((a,b)=>{return a.id-b.id});
         this.appUserService.changeData(data);
       },
       error=> {
@@ -55,4 +55,3 @@ export class MyBookingComponent implements OnInit {
     this.currentUser.appBookings.sort( (a,b)=>this.appUserService.compareId(a.id,b.id))
   }
 }
-
