@@ -47,16 +47,19 @@ export class MainPageHouseListComponent implements OnInit {
       }
     }
     if((this.startDate!="")&&(this.endDate!="")&&checkSearchingDate){
+      console.log("checking date")
       for(let i = 0; i < this.propertyPage.length; i++){
         for(let j = 0; j < this.propertyPage[i].appBookings.length; j++){
           console.log(j);
-          let bookingdateStart=Date.parse(this.propertyPage[i].appBookings[i].checkinDate);
-          let bookingdateEnd=Date.parse(this.propertyPage[i].appBookings[i].checkoutDate);
+          let bookingdateStart=Date.parse(this.propertyPage[i].appBookings[j].checkinDate);
+          let bookingdateEnd=Date.parse(this.propertyPage[i].appBookings[j].checkoutDate);
           let startdiff=bookingdateStart-dateEnd;
           let enddiff=bookingdateEnd-dateStart;
           console.log(startdiff);
           console.log(enddiff);
           if(!(startdiff>=0||enddiff<=0)){
+            console.log("slice");
+            console.log(this.propertyPage[i].id)
             this.propertyPage.splice(i,1);
             i--;
             break;
@@ -67,8 +70,8 @@ export class MainPageHouseListComponent implements OnInit {
     if(this.search==""&&this.startDate==""&&this.endDate==""){
       this.propertyPage=this.unfiltered.filter(object => object.status=="Available").sort(
         (a,b)=>{
-        return b.id-a.id;
-      });
+          return b.id-a.id;
+        });
     }
   }
   resetList(){
@@ -77,14 +80,14 @@ export class MainPageHouseListComponent implements OnInit {
       (data: AppProperty[])=>{
         this.propertyPage=data.filter(object => object.status=="Available").sort(
           (a,b)=>{
-          return b.id-a.id;
-        });
+            return b.id-a.id;
+          });
       }
     )
   }
 
   ngOnInit(): void {
-      this.appUserService.getAllProperty().subscribe(
+    this.appUserService.getAllProperty().subscribe(
       //Success
       (data: AppProperty[])=>{
         this.propertyPage=data.filter(object => object.status=="Available");
