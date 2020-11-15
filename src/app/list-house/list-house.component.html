@@ -10,7 +10,7 @@
 
   <form [formGroup]="userForm" style="width: 80%; margin-left: 10%; margin-top:3%">
     <div class="form-group">
-      <label>House Name:</label>
+      <label>House Name<sup style="color: red;">*</sup>:</label>
       <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
       <div *ngIf="name.invalid && (name.dirty || name.touched)"
           class="alert alert-danger my-1">
@@ -20,20 +20,20 @@
       </div>
     </div>
     <div class="form-group">
-      <label>House Images:</label>
+      <label>House Images<sup style="color: red;">*</sup>:</label>
       <input type="text" class="form-control" formControlName="appImages" placeholder="Enter image">
     </div>
     <div class="form-group">
       <label>House Status:</label>
       <select class="form-control" formControlName="status">
-        <option>Available</option>
+        <option [selected]="true">Available</option>
         <option>Not Available</option>
       </select>
     </div>
     <div class="form-group">
-      <label>Type :</label>
+      <label>Type<sup style="color: red;">*</sup> :</label>
       <select class="form-control" formControlName="type">
-        <option>Single</option>
+        <option [selected]="true">Single</option>
         <option>Double</option>
         <option>Presidential</option>
         <option>Vip</option>
@@ -41,7 +41,7 @@
       </select>
     </div>
     <div class="form-group">
-      <label>Number of Bedrooms :</label>
+      <label>Number of Bedrooms<sup style="color: red;">*</sup> :</label>
       <select class="form-control" formControlName="bedroomNum">
         <option>1</option>
         <option>2</option>
@@ -56,7 +56,7 @@
       </select>
     </div>
     <div class="form-group">
-      <label>Number of Bathroom :</label>
+      <label>Number of Bathroom<sup style="color: red;">*</sup> :</label>
       <select class="form-control" formControlName="bathroomNum">
         <option>1</option>
         <option>2</option>
@@ -65,21 +65,21 @@
     </div>
 
     <div class="form-group">
-      <label>Description:</label>
+      <label>Description<sup style="color: red;">*</sup>:</label>
       <textarea class="form-control" formControlName="description" placeholder="Enter description..."></textarea>
-        <div *ngIf="description.errors?.required" class="my-1 alert alert-danger">
+        <div *ngIf="description.errors?.required && (description.dirty || description.touched)" class="my-1 alert alert-danger">
           Description Required
-      </div>
+        </div>
     </div>
     <div class="form-group">
-      <label>Address:</label>
+      <label>Address<sup style="color: red;">*</sup>:</label>
       <textarea class="form-control" formControlName="address" placeholder="Enter description..."></textarea>
-        <div *ngIf="address.errors?.required" class="my-1 alert alert-danger">
-          Description Required
+        <div *ngIf="address.errors?.required &&(address.dirty || address.touched)" class="my-1 alert alert-danger">
+          Address Required
       </div>
     </div>
     <div class="form-group">
-      <label>Price per day: </label>
+      <label>Price per day<sup style="color: red;">*</sup>: </label>
       <input type="number" class="form-control" formControlName="pricePerDay" placeholder="Enter Price Per Day">
       <div *ngIf="pricePerDay.invalid && (pricePerDay.dirty || pricePerDay.touched)"
           class="alert alert-danger my-1">
@@ -87,10 +87,6 @@
           input price
         </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label>Avatar</label>
-      <input type="text" class="form-control" placeholder="Enter Link">
     </div>
     <br>
     <div class="form-group">
