@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AppUserService} from '../../service/app-user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AppUser} from 'src/app/object-interfaces/AppUser';
+import { AppUser } from 'src/app/object-interfaces/AppUser';
 
 @Component({
   selector: 'app-create-user',
@@ -11,14 +11,12 @@ import {AppUser} from 'src/app/object-interfaces/AppUser';
 })
 export class CreateUserComponent implements OnInit {
 
-  message: String = null;
+  message: String= null;
 
   userForm: FormGroup;
-
   constructor(private fb: FormBuilder,
               private appUserService: AppUserService,
-              private router: Router) {
-  }
+              private router: Router) { }
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -26,36 +24,33 @@ export class CreateUserComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
-      avatar: [''],
-      realName: ['', [Validators.required, Validators.name]],
-      address: ['', [Validators.required]]
+      realName:['', [Validators.required]],
+      address:['', [Validators.required]]
     });
   }
-
   createUser(): void {
-    let user: AppUser = {
+    let user: AppUser={
       name: this.userForm.value.name,
       email: this.userForm.value.email,
       password: this.userForm.value.password,
       phoneNumber: this.userForm.value.phoneNumber,
-      avatar: this.userForm.value.avatar,
       realName: this.userForm.value.realName,
       address: this.userForm.value.address,
-      appRole: {
+      appRole:{
         id: 2 as number
       }
     };
 
     this.appUserService.createUser(user).subscribe(
-      //thanh cong
-      () => {
-        this.message = null;
-        this.router.navigateByUrl('/login', {state: {success: true}});
-      },
-      //that bai
+    //thanh cong
+    () => {
+      this.message=null;
+      this.router.navigateByUrl('/login',{state: {success:true}});
+    },
+    //that bai
       (error) => {
-        if (error.error.exception == 'com.TDD.ABnB.exceptions.DuplilcateUserException') {
-          this.message = error.error.message;
+        if(error.error.exception=="com.TDD.ABnB.exceptions.DuplilcateUserException"){
+          this.message= error.error.message;
         }
       }
     );
@@ -65,28 +60,24 @@ export class CreateUserComponent implements OnInit {
   get nameUser() {
     return this.userForm.get('name');
   }
-
   get emailUser() {
     return this.userForm.get('email');
   }
-
   get passWordUser() {
     return this.userForm.get('password');
   }
-
-  get phoneNumberUser() {
+  get phoneNumberUser(){
     return this.userForm.get('phoneNumber');
   }
-
-  get avatarUser() {
+  get avatarUser(){
     return this.userForm.get('avatar');
   }
 
-  get realName() {
+  get realName(){
     return this.userForm.get('realName');
   }
 
-  get address() {
+  get address(){
     return this.userForm.get('address');
   }
 
