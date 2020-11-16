@@ -42,12 +42,12 @@ export class CreateUserComponent implements OnInit {
     };
 
     this.appUserService.createUser(user).subscribe(
-    //thanh cong
-    () => {
-      this.message=null;
-      this.router.navigateByUrl('/login',{state: {success:true}});
-    },
-    //that bai
+      //thanh cong
+      () => {
+        this.message=null;
+        this.router.navigateByUrl('/login',{state: {success:true}});
+      },
+      //that bai
       (error) => {
         if(error.error.exception=="com.TDD.ABnB.exceptions.DuplilcateUserException"){
           this.message= error.error.message;

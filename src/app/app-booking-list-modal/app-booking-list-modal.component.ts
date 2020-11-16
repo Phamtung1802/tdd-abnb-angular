@@ -13,6 +13,7 @@ export class AppBookingListModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.prop.appBookings.sort((a,b)=> {return a.id-b.id})
   }
 
 }

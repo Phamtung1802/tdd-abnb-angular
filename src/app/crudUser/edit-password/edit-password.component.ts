@@ -21,8 +21,8 @@ export class EditPasswordComponent implements OnInit {
 
 
   constructor(private appUserService: AppUserService,
-    private fb: FormBuilder,
-    private router: Router) { }
+              private fb: FormBuilder,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.appUserService.getData().subscribe(data=>{
@@ -32,27 +32,27 @@ export class EditPasswordComponent implements OnInit {
       oldPassword: new FormControl(),
       newPassword: new FormControl(),
       confirmNewPassword: new FormControl()
-   });
+    });
   }
 
   update(): void {
     const user = {
-     password: this.userForm.value.newPassword,
-     name: this.userForm.value.oldPassword
+      password: this.userForm.value.newPassword,
+      name: this.userForm.value.oldPassword
     };
     console.log(this.userForm.value.newPassword);
     console.log(this.userForm.value.confirmNewPassword);
 
     if(this.userForm.value.newPassword===this.userForm.value.confirmNewPassword&&this.userForm.value.newPassword!=null&&this.userForm.value.confirmNewPassword!=null){
       this.appUserService.updateUserPassword(this.currentUser.id, user).subscribe(data => {
-        this.success=true;
-        this.failure=false;
-        this.appUserService.changeData(data);
-      },
-      err=>{
-        this.failure=true;
-        this.success=false;
-      })
+          this.success=true;
+          this.failure=false;
+          this.appUserService.changeData(data);
+        },
+        err=>{
+          this.failure=true;
+          this.success=false;
+        })
     }
   }
 }
