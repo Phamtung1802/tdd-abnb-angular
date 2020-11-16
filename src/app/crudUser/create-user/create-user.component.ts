@@ -24,7 +24,6 @@ export class CreateUserComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
-      avatar: [''],
       realName:['', [Validators.required]],
       address:['', [Validators.required]]
     });
@@ -35,7 +34,6 @@ export class CreateUserComponent implements OnInit {
       email: this.userForm.value.email,
       password: this.userForm.value.password,
       phoneNumber: this.userForm.value.phoneNumber,
-      avatar: this.userForm.value.avatar,
       realName: this.userForm.value.realName,
       address: this.userForm.value.address,
       appRole:{
