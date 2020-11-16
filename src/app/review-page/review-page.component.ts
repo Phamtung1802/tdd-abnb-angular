@@ -18,4 +18,8 @@ export class ReviewPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  getArray(number: number){
+    return Array(number);
+  }
 }

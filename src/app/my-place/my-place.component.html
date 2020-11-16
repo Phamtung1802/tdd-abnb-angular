@@ -3,21 +3,27 @@
     <tbody class="container">
       <tr class="row">
         <th class="col-1">ID</th>
-        <th class="col-5">Name</th>
-        <th class="col-4">Address</th>
-        <th class="col-1">Actions</th>
+        <th class="col-4">Name</th>
+        <th class="col-5">Address</th>
+        <th class="col-2">Actions</th>
       </tr>
       <tr *ngFor="let prop of currentUser.appProperties; let i = index" class="row">
         <td class="col-1">{{prop.id}}</td>
-        <td class="col-5">{{prop.name}}</td>
-        <td class="col-4">{{prop.address}}</td>
-        <td class="col-1">
-          <select (change)="updatePropertyStatus(prop, $event.target.value)" [value]="prop.status">
+        <td class="col-4">
+          <button type="button" class="btn col-4 mx-1" data-toggle="modal" [attr.data-target]="'#placebooking'+prop.id">
+          {{prop.name}}
+         </button>
+        </td>
+        <td class="col-5">{{prop.address}}</td>
+        <td class="col-2">
+          <select (change)="updatePropertyStatus(prop, $event.target.value)" [value]="prop.status" class="form-control col-12">
             <option>Available</option>
             <option>Not Available</option>
           </select>
         </td>
+        <app-app-booking-list-modal [prop]="prop"></app-app-booking-list-modal>
       </tr>
     </tbody>
   </table>
+
 </div>

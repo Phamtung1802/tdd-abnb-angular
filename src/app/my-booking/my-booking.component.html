@@ -1,5 +1,5 @@
 <div class="py-4 container row" style="background-color: white;">
-  <div *ngIf="message!=null&&message!='Success'"class="alert alert-danger my-1">
+  <div *ngIf="message!=null&&message!='Success'"class="alert alert-danger my-1 col-12">
     <div [innerHTML]="message">
     </div>
   </div>
@@ -10,14 +10,14 @@
         <th class="col-5">Name</th>
         <th class="col-2">Check In Date</th>
         <th class="col-2">Check Out Date</th>
-        <th class="col-1">Actions</th>
+        <th class="col-2">Actions</th>
       </tr>
       <tr *ngFor="let booking of currentUser.appBookings; let i = index" class="row">
         <td class="col-1">{{booking.id}}</td>
         <td class="col-5">{{booking.appProperty.name}}</td>
         <td class="col-2">{{booking.checkinDate}}</td>
         <td class="col-2">{{booking.checkoutDate}}</td>
-        <td class="col-1">
+        <td class="col-2">
           <button (click)="deleteBooking(booking)" class="btn btn-primary">Cancel</button>
         </td>
       </tr>

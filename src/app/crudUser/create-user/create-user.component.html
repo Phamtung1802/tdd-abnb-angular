@@ -8,7 +8,7 @@
   <form [formGroup]="userForm" style="width: 80%; margin-left: 10%; margin-top:3%;">
     <div class="form-group">
       <label>User Name<sup style="color: red;">*</sup>:</label>
-      <input type="text" class="form-control" formControlName="name" placeholder="Enter name *" >
+      <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
       <div *ngIf="nameUser.invalid && (nameUser.dirty || nameUser.touched)"
           class="alert alert-danger my-1">
         <div *ngIf="nameUser.errors.required" class="my-1">
@@ -18,10 +18,10 @@
     </div>
     <div class="form-group">
       <label>Email<sup style="color: red;">*</sup>:</label>
-      <input type="text" class="form-control" formControlName="email" placeholder="Enter email *">
+      <input type="text" class="form-control" formControlName="email" placeholder="Enter email">
       <div *ngIf="emailUser.invalid && (nameUser.dirty || nameUser.touched)"
           class="alert alert-danger my-1">
-        <div *ngIf="emailUser.errors.required">
+        <div *ngIf="emailUser.errors.required &&(address.dirty||address.touched)">
           Email Not Empty
         </div>
         <div *ngIf="emailUser.errors.email" class="my-1">
@@ -30,33 +30,36 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Password:</label>
-      <input type="password" class="form-control" formControlName="password" placeholder="Enter password *">
+      <label>Password<sup style="color: red;">*</sup>:</label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
       <div *ngIf="passWordUser.invalid && (nameUser.dirty || nameUser.touched)"
           class="alert alert-danger my-1">
-        <div *ngIf="passWordUser.errors.required" class="my-1">
+        <div *ngIf="passWordUser.errors.required &&(address.dirty&&address.touched)" class="my-1">
           Password Required
         </div>
       </div>
     </div>
     <div class="form-group">
       <label>Real Name<sup style="color: red;">*</sup>:</label>
-      <input type="text" class="form-control" formControlName="realName" placeholder="Enter Real Name *">
-        <div *ngIf="realName.errors?.required" class="my-1 alert alert-danger">
+      <input type="text" class="form-control" formControlName="realName" placeholder="Enter Real Name">
+        <div *ngIf="realName.errors?.required &&(address.dirty||address.touched)" class="my-1 alert alert-danger">
+          Real Name Required
       </div>
     </div>
     <div class="form-group">
       <label>Address<sup style="color: red;">*</sup>:</label>
-      <input type="text" class="form-control" formControlName="address" placeholder="Enter address *">
-        <div *ngIf="address.errors?.required" class="my-1 alert alert-danger">
+      <input type="text" class="form-control" formControlName="address" placeholder="Enter address">
+        <div *ngIf="address.errors?.required &&(address.dirty||address.touched)" class="my-1 alert alert-danger">
+          Address Required
       </div>
     </div>
     <div class="form-group">
       <label>PhoneNumber<sup style="color: red;">*</sup>:</label>
-      <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter Phone Number *">
+      <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter Phone Number">
       <div *ngIf="phoneNumberUser.invalid && (phoneNumberUser.dirty || phoneNumberUser.touched)"
           class="alert alert-danger my-1">
         <div *ngIf="phoneNumberUser.errors.required" class="my-1">
+          Phone Number Not Empty
         </div>
       </div>
     </div>
